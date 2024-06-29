@@ -1,5 +1,6 @@
 import MistralClient from "@mistralai/mistralai";
 import { createClient } from "@supabase/supabase-js";
+import readline from 'readline';
 
 const mistralClient = new MistralClient("u2J9xMhy5qFjgpzMaCCT7YnoCIq1kjlH");
 const supabase = createClient("https://bewwfdiqefwvthokopxy.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJld3dmZGlxZWZ3dnRob2tvcHh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkyMTk0NTcsImV4cCI6MjAzNDc5NTQ1N30.o5JY0pPTp1Kt_We67jL_WR_G8iwsm7hjRtF8HYKOcao");
@@ -7,46 +8,49 @@ const supabase = createClient("https://bewwfdiqefwvthokopxy.supabase.co", "eyJhb
 const BACKOFF_BASE_MS = 500; // Base backoff time in milliseconds
 const BACKOFF_MAX_ATTEMPTS = 2; // Maximum number of retry attempts
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 async function backoff(attempt) {
   const delay = BACKOFF_BASE_MS * (2 ** attempt);
   await new Promise(resolve => setTimeout(resolve, delay));
 }
 
 async function processInput() {
-  const input = "Tell me about yourself";
-
-  if (!input.trim()) {
-    console.log("Ask me anything you wanna know about me!");
-    return;
-  }
-
-  try {
-    // 2. Creating an embedding of the input
-    const embedding = await createEmbedding(input);
-    if (embedding === null) {
-      throw new Error("I'm sorry, I failed to create embedding for the input :( Please try again later 🕺");
+  rl.question("Ask me anything you wanna know about me! (Type 'exit' to quit)\n", async (input) => {
+    if (input.toLowerCase() === 'exit') {
+      rl.close();
+      return;
     }
 
-    // 3. Retrieving similar embeddings / text chunks (aka "context")
-    const context = await retrieveMatches(embedding);
-    if (context === null) {
-      throw new Error("I'm sorry, I failed to retrieve matches for the embedding :( Please try again later 🕺");
+    if (!input.trim()) {
+      console.log("Ask me anything you wanna know about me!");
+      processInput(); // Ask again for input
+      return;
     }
 
-    // 4. Combining the input and the context in a prompt and using the chat API to generate a response
-    const response = await generateChatResponse(context, input);
-    if (response === null) {
-      throw new Error("I'm sorry, I failed to generate chat response :( Please try again later 🕺");
-    }
+    try {
+      const embedding = await createEmbedding(input);
+      if (!embedding) {
+        throw new Error("Failed to create embedding for input.");
+      }
 
-    console.log(response);
-  } catch (error) {
-    console.error("I'm sorry, I", error.message, ":( Please try again later 🕺");
-    // Handle the error as needed, e.g., show a user-friendly message or log the error on a server
-  }
-  
+      const context = await retrieveMatches(embedding);
+      if (!context) {
+        throw new Error("Failed to retrieve matching content.");
+      }
+
+      const response = await generateChatResponse(context, input);
+      console.log(response);
+    } catch (error) {
+      console.error("Sorry, an error occurred:", error.message);
+    } finally {
+      processInput(); // Continue asking for input recursively
+    }
+  });
 }
-
 
 async function createEmbedding(input) {
   try {
