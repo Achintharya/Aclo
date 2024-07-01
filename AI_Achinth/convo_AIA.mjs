@@ -1,6 +1,7 @@
 import MistralClient from "@mistralai/mistralai";
 import { createClient } from "@supabase/supabase-js";
-import readline from 'readline';
+import * as readline from "readline";
+
 
 const mistralClient = new MistralClient("u2J9xMhy5qFjgpzMaCCT7YnoCIq1kjlH");
 const supabase = createClient("https://bewwfdiqefwvthokopxy.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJld3dmZGlxZWZ3dnRob2tvcHh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkyMTk0NTcsImV4cCI6MjAzNDc5NTQ1N30.o5JY0pPTp1Kt_We67jL_WR_G8iwsm7hjRtF8HYKOcao");
@@ -65,15 +66,16 @@ async function createEmbedding(input) {
       throw new Error("I'm sorry, Unexpected response structure from the embeddings API :( Please try again later 🕺");
     }
   } catch (error) {
-    console.error("I'm sorry, I", error.message, ":( Please try again later 🕺");
+    console.log("I'm sorry, I", error.message, ":( Please try again later 🕺");
     // Handle the error as needed, e.g., return null, throw the error, or show a user-friendly message
     return null;
   }
+  
 }
 
 async function retrieveMatches(embedding) {
     try {
-        const { data, error } = await supabase.rpc('match_my_resume', {
+        const { data } = await supabase.rpc('match_my_resume', {
             query_embedding: embedding,
             match_threshold: 0.7,
             match_count: 3
@@ -95,7 +97,7 @@ async function generateChatResponse(context, query) {
 
   // Prompt message including current date and time
   const promptMessage = `Current Date and Time: ${currentDate}, ${currentTime}\n`
-                       + `Resume context: ${context} - Question: ${query}`;
+                       +  `Resume context: ${context} - Question: ${query}`;
 
   let attempt = 0;
   while (attempt < BACKOFF_MAX_ATTEMPTS) {

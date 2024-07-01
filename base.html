@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Achintharya">
+    <meta name="description" content="This is Achintharya's portfolio">
+    <title>Achintharya Patil</title>
+    <link rel="stylesheet" href="Templates/css/aesthetic.css">
+    
+    <script type="module">
+        import { processInput } from './js/web_AIA.mjs';
+
+        console.log("processInput function imported:", processInput);
+
+        function expandContainer() {
+            console.log("expandContainer function called");
+            const buttonContainer = document.getElementById('buttonContainer');
+            const inputContainer = document.getElementById('inputContainer');
+            const inputText = document.getElementById('inputText');
+            const inputLabel = document.querySelector('.input__label');
+
+            // Check if elements are found
+            if (!buttonContainer) {
+                console.error("buttonContainer not found");
+                return;
+            }
+            if (!inputContainer) {
+                console.error("inputContainer not found");
+                return;
+            }
+            if (!inputText) {
+                console.error("inputText not found");
+                return;
+            }
+            if (!inputLabel) {
+                console.error("inputLabel not found");
+                return;
+            }
+
+            // Hide the button container
+            buttonContainer.style.display = 'none';
+            console.log("buttonContainer hidden");
+            
+            inputContainer.style.display = 'flex'; // Ensure it's displayed
+
+            setTimeout(() => {
+                inputContainer.classList.add('active');
+                console.log("inputContainer displayed");
+            }, 10); // Small delay to allow the display change to take effect
+
+            function stop_loader() {
+                const loader = document.getElementById('loader_container');
+                if (loader) {
+                    loader.style.display = 'none';
+                } else {
+                    console.error("Loader not found");
+                }
+            }
+
+            inputText.addEventListener('keypress', async function(event) {
+                stop_loader();
+                if (event.key === 'Enter') {
+                    const userInput = inputText.value;
+                    console.log("User input: ", userInput);
+                    try {
+                        const modelOutput = await processInput(userInput);
+                        console.log("Model output: ", modelOutput);
+                        inputLabel.innerHTML = modelOutput;
+                    } catch (error) {
+                        console.error("Error processing input:", error);
+                    }
+                } 
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM fully loaded and parsed");
+            const button = document.querySelector('.btn');
+            if (button) {
+                console.log("Button found:", button);
+                button.addEventListener('click', expandContainer);
+            } else {
+                console.error("Button not found");
+            }
+
+            const inputText = document.getElementById('inputText');
+            if (inputText) {
+                inputText.addEventListener('keypress', async function(event) {
+                    const loader = document.getElementById('loader_container');
+                    if (loader) {
+                        loader.style.display = 'none';
+                    } else {
+                        console.error("Loader not found");
+                    }
+                    if (event.key === 'Enter') {
+                        const userInput = inputText.value;
+                        console.log("User input: ", userInput);
+                        try {
+                            const modelOutput = await processInput(userInput);
+                            console.log("Model output: ", modelOutput);
+                            const inputLabel = document.querySelector('.input__label');
+                            if (inputLabel) {
+                                inputLabel.innerHTML = modelOutput;
+                            } else {
+                                console.error("Input label not found");
+                            }
+                        } catch (error) {
+                            console.error("Error processing input:", error);
+                        }
+                    } 
+                });
+            } else {
+                console.error("Input text not found");
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="header">
+        <nav>
+            <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#stalk_me">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="Home">
+        <h1>Hello! I am <span>Achintharya</span><br> AI and Machine Learning engineer.</h1>
+    </div>
+
+    <div id="about">      
+        <div id = "AI_me">
+            <h1>A little something to get you curious :)</h1>
+        </div> 
+        <div class="button-container" id="buttonContainer">
+            <button class="btn" type="button">
+                <strong>Talk to my AI</strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+        </div>
+        <div class="input__container" id="inputContainer">
+            <p class="input__label">
+                
+            </p>
+
+            <div class="loader" id = "loader_container">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>   
+
+            <input
+                placeholder="Ask me anything you wanna know about me"
+                class="input"
+                id="inputText"
+                name="text"
+                type="text"
+            />
+        </div>
+    </div>
+
+    <div id="stalk_me">
+        <h1>Ways to get in touch with me.</h1>
+    </div>
+  
+    <footer>
+        <p>&copy; Achintharya Patil</p>
+    </footer>
+</body>
+</html>
