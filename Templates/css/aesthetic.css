@@ -3,45 +3,82 @@ body {
   color: aliceblue;
 }
 
+body, * {
+  cursor: url('https://img.icons8.com/?size=40&id=mAKFHneLBzsq&format=png&color=000000'), auto;
+}
+
 #header {
   width: 100%;
-  height: 50px;
   background-size: cover;
   background-position: center;
-  position: sticky; /* Corrected spacing */
+  position: relative; /* Corrected spacing */
   top: 0;
+  position: sticky;
+  z-index: 1;
 }
 
 nav {
   display: inline-flex;
-  padding-bottom: 20px;
-  padding-left: 20px; /* Adjusted to a more reasonable value */
+  width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end; /* Align items to the right */
   flex-wrap: wrap;
 }
 
-nav ul li {
+nav ul li{
   display: inline-block;
-  list-style: none;
-  margin: 10px 20px;
+  padding-right: 7px;
 }
 
-nav ul li a {
-
-  color: aliceblue;
+nav ul li a{
   text-decoration: none;
-  font-size: 18px;
+  color: transparent;
+  -webkit-text-stroke: 0.45px var(--text-stroke-color);
+
+}
+
+/* button styling */
+.nav_button {
+  --border-right: 4px;
+  --text-stroke-color: rgb(240, 248, 255);
+  --animation-color: #37FF8B;
+  --fs-size: 1.2em;
+  letter-spacing: 6.5px;
+  font-size: var(--fs-size);
+  font-family: "Arial";
   position: relative;
+  text-transform: uppercase;
+}
+
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.nav_button:hover .hover-text {
+  width: 90%;
+  filter: drop-shadow(0 0 20px var(--animation-color))
+}
+
+#Home{
+  padding-left:100px;
+  padding-top: 50px;
 }
 
 #Home h1 {
-  margin: 50px;
   font-family: 'Papyrus', fantasy, sans-serif;
   color: aliceblue;
   width: 100%;
   height: 100vh;
-  padding-top: 50px;
   background-size: cover;
   background-position: center;
 }
@@ -58,11 +95,66 @@ nav ul li a {
   display: grid;
   width: 100%;
   height: 100vh;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(20px); /* Slightly moved down */
+  transition: opacity 3.5s ease-out, transform 3.5s ease-out; /* Smooth transition */
 }
+
+#about.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to original position */
+}
+
+#about_container-stars {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(1.5rem);
+  border-radius: 5rem;
+}
+
+#about_stars {
+  position: relative;
+  background: transparent;
+  width: 300rem;
+  height: 300rem;
+}
+
+#about_stars::after {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  left: -100rem;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 80px 80px;
+  opacity:0.5;
+  animation: animAboutStarRotate 220s linear infinite;
+}
+
+#about_stars::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 170%;
+  height: 500%;
+  background-image: radial-gradient(#ffffff 1px, transparent 1%);
+  background-size: 80px 80px;
+  opacity: 0.5;
+  animation: animAboutStar 120s linear infinite;
+}
+
 
 #AI_me h1 {
   margin: 50px;
   font-family: 'Papyrus', fantasy, sans-serif;
+  font-size: 2.5em;
+  font-variant: bold;
   color: aliceblue;
   width: 100%;
   height: 100vh;
@@ -70,42 +162,29 @@ nav ul li a {
   background-position: center;
 }
 
-#stalk_me{
-  background-color: cadetblue;
-  width: 100%;
-  height:40vh;
-}
-
-footer {
-  background-color: black;
-  color: aliceblue;
-  text-align: center;
-  padding: 0.2px;
-  position: static;
-  width: 100%;
-}
-
-
 .button-container, .input__container {
   position: absolute;
+  background-image: radial-gradient(rgb(4, 1, 12));
+  z-index: 2;
 }
 
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 13rem;
+  width: 23rem;
   overflow: hidden;
-  height: 3rem;
-  background-size: 300% 300%;
+  height: 4.5rem;
+  background-size: 350% 350%;
   backdrop-filter: blur(1rem);
-  border-radius: 5rem;
+  border-radius: 40%;
   transition: 0.5s;
   animation: gradient_301 5s ease infinite;
-  border: double 4px transparent;
+  border: double 5px transparent;
   background-image: linear-gradient(#212121, #212121), linear-gradient(137.48deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
   background-origin: border-box;
   background-clip: content-box, border-box;
+  position: relative; /* Ensure the pseudo-element is positioned relative to the button */
 }
 
 #container-stars {
@@ -116,13 +195,13 @@ footer {
   overflow: hidden;
   transition: 0.5s;
   backdrop-filter: blur(1rem);
-  border-radius: 5rem;
+  border-radius: 8rem;
 }
 
 strong {
   z-index: 2;
   font-family: 'Avalors Personal Use';
-  font-size: 12px;
+  font-size: 21px;
   letter-spacing: 5px;
   color: #FFFFFF;
   text-shadow: 0 0 4px white;
@@ -277,6 +356,46 @@ strong {
   color: #fff;
 }
 
+#stalk_me{
+  width: 100%;
+  height:40vh;
+}
+
+footer {
+  background-color: black;
+  color: aliceblue;
+  text-align: center;
+  padding: 0.2px;
+  position: static;
+  width: 100%;
+}
+
+body, * {
+  cursor: url('https://img.icons8.com/?size=40&id=mAKFHneLBzsq&format=png&color=000000'), auto;
+}
+
+/* Bullet styling */
+.bullet {
+  position: absolute;
+  width: 5px;
+  height: 20px;
+  background-color: red;
+  border: 1px solid yellow; /* Add border for visibility */
+  border-radius: 2px;
+  pointer-events: none; /* Allow clicks to pass through */
+  animation: shoot 1s linear;
+  z-index: 1000;
+}
+
+/* Shooting animation */
+@keyframes shoot {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100vh);
+  }
+}
 @keyframes animStar {
   from {
     transform: translateY(0);
@@ -294,6 +413,28 @@ strong {
 
   to {
     transform: rotate(0);
+  }
+}
+
+@keyframes animAboutStar {
+  from {
+    transform: translateY(-135rem);
+    
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animAboutStarRotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+    
   }
 }
 
@@ -329,27 +470,51 @@ strong {
 }
 
 .loader {
+  padding-top: 25px;
   display: flex;
+  visibility: visible;
   align-items: center;
+  position: absolute;
+  transition: opacity 1s ease-in;
+  opacity:1;
+}
+
+.loader.dead{
+  opacity: 0;
 }
 
 .bar {
   display: inline-block;
-  width: 3px;
-  height: 20px;
+  width: 10px;
+  height: 30px;
+  margin: 0 3px;
   background-color: rgba(255, 255, 255, .5);
   border-radius: 10px;
   animation: scale-up4 1s linear infinite;
 }
 
 .bar:nth-child(2) {
-  height: 35px;
-  margin: 0 5px;
+  height: 60px;
+  margin: 0 3px;
   animation-delay: .25s;
 }
 
 .bar:nth-child(3) {
+  height: 80px;
+  margin: 0 3px;
   animation-delay: .5s;
+}
+
+.bar:nth-child(4) {
+  height: 60px;
+  margin: 0 3px;
+  animation-delay: .75s;
+}
+
+.bar:nth-child(5) {
+  height: 30px; /* Set the height for the new bar */
+  margin: 0 3px;
+  animation-delay: 1s; /* Set the animation delay for the new bar */
 }
 
 @keyframes scale-up4 {
@@ -362,3 +527,4 @@ strong {
     transform: scaleY(1);
   }
 }
+

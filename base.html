@@ -8,18 +8,47 @@
     <meta name="description" content="This is Achintharya's portfolio">
     <title>Achintharya Patil</title>
     <link rel="stylesheet" href="Templates/css/aesthetic.css">
-    
     <script type="module">
         import { processInput } from './js/web_AIA.mjs';
 
         console.log("processInput function imported:", processInput);
+
+        function stop_loader() {
+            const loader = document.getElementById('loader_container');
+            if (loader) {
+                loader.classList.add('dead');
+                console.log("loader hidden");
+            } else {
+                console.error("Loader not found");
+            }
+        }
+
+        function handleInput(event) {
+            if (event.key === 'Enter') {
+                stop_loader();
+                const userInput = event.target.value;
+                console.log("User input: ", userInput);
+                processInput(userInput)
+                    .then(modelOutput => {
+                        console.log("Model output: ", modelOutput);
+                        const inputLabel = document.querySelector('.input__label');
+                        if (inputLabel) {
+                            inputLabel.innerHTML = modelOutput;
+                        } else {
+                            console.error("Input label not found");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error processing input:", error);
+                    });
+            }
+        }
 
         function expandContainer() {
             console.log("expandContainer function called");
             const buttonContainer = document.getElementById('buttonContainer');
             const inputContainer = document.getElementById('inputContainer');
             const inputText = document.getElementById('inputText');
-            const inputLabel = document.querySelector('.input__label');
 
             // Check if elements are found
             if (!buttonContainer) {
@@ -34,10 +63,6 @@
                 console.error("inputText not found");
                 return;
             }
-            if (!inputLabel) {
-                console.error("inputLabel not found");
-                return;
-            }
 
             // Hide the button container
             buttonContainer.style.display = 'none';
@@ -50,29 +75,7 @@
                 console.log("inputContainer displayed");
             }, 10); // Small delay to allow the display change to take effect
 
-            function stop_loader() {
-                const loader = document.getElementById('loader_container');
-                if (loader) {
-                    loader.style.display = 'none';
-                } else {
-                    console.error("Loader not found");
-                }
-            }
-
-            inputText.addEventListener('keypress', async function(event) {
-                stop_loader();
-                if (event.key === 'Enter') {
-                    const userInput = inputText.value;
-                    console.log("User input: ", userInput);
-                    try {
-                        const modelOutput = await processInput(userInput);
-                        console.log("Model output: ", modelOutput);
-                        inputLabel.innerHTML = modelOutput;
-                    } catch (error) {
-                        console.error("Error processing input:", error);
-                    }
-                } 
-            });
+            inputText.addEventListener('keypress', handleInput);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -87,33 +90,26 @@
 
             const inputText = document.getElementById('inputText');
             if (inputText) {
-                inputText.addEventListener('keypress', async function(event) {
-                    const loader = document.getElementById('loader_container');
-                    if (loader) {
-                        loader.style.display = 'none';
-                    } else {
-                        console.error("Loader not found");
-                    }
-                    if (event.key === 'Enter') {
-                        const userInput = inputText.value;
-                        console.log("User input: ", userInput);
-                        try {
-                            const modelOutput = await processInput(userInput);
-                            console.log("Model output: ", modelOutput);
-                            const inputLabel = document.querySelector('.input__label');
-                            if (inputLabel) {
-                                inputLabel.innerHTML = modelOutput;
-                            } else {
-                                console.error("Input label not found");
-                            }
-                        } catch (error) {
-                            console.error("Error processing input:", error);
-                        }
-                    } 
-                });
+                inputText.addEventListener('keypress', handleInput);
             } else {
                 console.error("Input text not found");
             }
+
+            // Scroll animation for #about section
+            const aboutSection = document.getElementById('about');
+
+            function handleScroll() {
+                const sectionTop = aboutSection.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (sectionTop < windowHeight) {
+                    aboutSection.classList.add('visible');
+                    window.removeEventListener('scroll', handleScroll); // Remove event listener after adding the class
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Check if the section is already in view on page load
         });
     </script>
 </head>
@@ -121,9 +117,26 @@
     <div id="header">
         <nav>
             <ul>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#stalk_me">Contact</a></li>
+                <li class="nav_button">
+                    <a href="#Home">
+                        <span class="actual-text">&nbsp;Home&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Home&nbsp;</span>
+                    </a>
+                </li>
+
+                <li class="nav_button">
+                    <a href = "#about">
+                        <span class="actual-text">&nbsp;About&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;About&nbsp;</span>
+                    </a>
+                </li>
+
+                <li class="nav_button">
+                    <a href = "#stalk_me">
+                        <span class="actual-text">&nbsp;Contact&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text">&nbsp;Contact&nbsp;</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -132,9 +145,13 @@
         <h1>Hello! I am <span>Achintharya</span><br> AI and Machine Learning engineer.</h1>
     </div>
 
-    <div id="about">      
-        <div id = "AI_me">
-            <h1>A little something to get you curious :)</h1>
+    <div id="about">
+        <div id="about_container-stars">
+            <div id="about_stars"></div>
+        </div>
+
+        <div id="AI_me">
+            <h1><br><br>A little something to get you curious about me :)</h1>
         </div> 
         <div class="button-container" id="buttonContainer">
             <button class="btn" type="button">
@@ -147,13 +164,16 @@
                     <div class="circle"></div>
                 </div>
             </button>
-        </div>
+        </div>        
+
         <div class="input__container" id="inputContainer">
             <p class="input__label">
                 
             </p>
 
-            <div class="loader" id = "loader_container">
+            <div class="loader" id="loader_container">
+                <span class="bar"></span>
+                <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -176,5 +196,6 @@
     <footer>
         <p>&copy; Achintharya Patil</p>
     </footer>
+    <script src="./js/shooter.js"></script>
 </body>
 </html>
