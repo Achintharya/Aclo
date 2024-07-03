@@ -8,6 +8,8 @@ body, * {
 }
 
 #header {
+
+
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -45,7 +47,7 @@ nav ul li a{
   --fs-size: 1.2em;
   letter-spacing: 6.5px;
   font-size: var(--fs-size);
-  font-family: "Arial";
+  font-family: "Avalors Personal Use";
   position: relative;
   text-transform: uppercase;
 }
@@ -70,9 +72,22 @@ nav ul li a{
 }
 
 #Home{
-  padding-left:100px;
+
+  padding-left: 50px;
   padding-top: 50px;
+  background-image: url(https://4kwallpapers.com/images/walls/thumbs_3t/6409.jpg);
+  transform: translateZ(100rem);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 0.5s ease-out; /* Smooth transition */
 }
+
+#Home.hide{
+  opacity: 0.5;
+}
+
 
 #Home h1 {
   font-family: 'Papyrus', fantasy, sans-serif;
@@ -90,19 +105,19 @@ nav ul li a{
 }
 
 #about {
-  background-image: url(images/background.png);
+  overflow: visible;
   place-items: center;
   display: grid;
   width: 100%;
   height: 100vh;
   opacity: 0; /* Initially hidden */
-  transform: translateY(20px); /* Slightly moved down */
-  transition: opacity 3.5s ease-out, transform 3.5s ease-out; /* Smooth transition */
+  transition: opacity 2s ease-out; /* Smooth transition */
+  position: relative;
 }
 
 #about.visible {
   opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Move to original position */
+
 }
 
 #about_container-stars {
@@ -113,7 +128,7 @@ nav ul li a{
   overflow: hidden;
   transition: 0.5s;
   backdrop-filter: blur(1.5rem);
-  border-radius: 5rem;
+  border-radius: 5rem;/
 }
 
 #about_stars {
@@ -157,24 +172,24 @@ nav ul li a{
   font-variant: bold;
   color: aliceblue;
   width: 100%;
-  height: 100vh;
+  height: 800vh;
   background-size: cover;
   background-position: center;
 }
 
-.button-container, .input__container {
+.button-container {
   position: absolute;
-  background-image: radial-gradient(rgb(4, 1, 12));
-  z-index: 2;
+  z-index: 1001; /* Ensure this element is above bullets */
+  pointer-events: auto; /* Allow clicks to be intercepted */
 }
 
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 23rem;
-  overflow: hidden;
-  height: 4.5rem;
+  width: 20rem;
+  overflow: visible;
+  height: 4rem;
   background-size: 350% 350%;
   backdrop-filter: blur(1rem);
   border-radius: 40%;
@@ -185,17 +200,19 @@ nav ul li a{
   background-origin: border-box;
   background-clip: content-box, border-box;
   position: relative; /* Ensure the pseudo-element is positioned relative to the button */
+  z-index: 1001; /* Ensure this element is above bullets */
 }
+
 
 #container-stars {
   position: absolute;
   z-index: -1;
-  width: 100%;
-  height: 100%;
+  width: 19rem;
+  height: 3.5rem;
   overflow: hidden;
   transition: 0.5s;
-  backdrop-filter: blur(1rem);
-  border-radius: 8rem;
+  backdrop-filter: blur(2rem);
+  border-radius: 40%;
 }
 
 strong {
@@ -210,13 +227,13 @@ strong {
 #glow {
   position: absolute;
   display: flex;
-  width: 12rem;
+  width: 20rem;
 }
 
 .circle {
-  width: 100%;
-  height: 30px;
-  filter: blur(2rem);
+  width: 120%;
+  height: 40px;
+  filter: blur(4rem);
   animation: pulse_3011 4s infinite;
   z-index: -1;
 }
@@ -229,14 +246,14 @@ strong {
   background: rgba(142, 81, 234, 0.704);
 }
 
-.btn:hover #container-stars {
-  z-index: 1;
+.btn:hover #container-stars{
   background-color: #212121;
 }
 
-.btn:hover {
-  transform: scale(1.1);
+.btn:hover, .btn.hover {
+  transform: scale(1.3);
 }
+
 
 .btn:active {
   border: double 4px #FE53BB;
@@ -370,21 +387,18 @@ footer {
   width: 100%;
 }
 
-body, * {
-  cursor: url('https://img.icons8.com/?size=40&id=mAKFHneLBzsq&format=png&color=000000'), auto;
-}
-
 /* Bullet styling */
 .bullet {
   position: absolute;
-  width: 5px;
-  height: 20px;
-  background-color: red;
-  border: 1px solid yellow; /* Add border for visibility */
-  border-radius: 2px;
+  width: 3px;
+  height: 10px;
+  background-image: linear-gradient(#39fd8a 40%, #77ffb0, #a6f6c7, #c3f6d8, #ffffff);
+  border-radius: 5%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
   pointer-events: none; /* Allow clicks to pass through */
-  animation: shoot 1s linear;
-  z-index: 1000;
+  animation: shoot 1.7s linear;
+  z-index: 1000; /* Ensure bullets are below the button */
 }
 
 /* Shooting animation */

@@ -142,3 +142,5 @@ async function generateChatResponse(context, query) {
   // Fallback call to generateChatResponse
   return generateChatResponse(context, "if no known query is detected, answer the query as yourself(Achintharya)");
 }
+
+window.processInput = processInput;
