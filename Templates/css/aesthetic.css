@@ -148,7 +148,7 @@ nav ul li a{
   background-image: radial-gradient(#ffffff 1px, transparent 1%);
   background-size: 80px 80px;
   opacity:0.5;
-  animation: animAboutStarRotate 220s linear infinite;
+  /* animation: animAboutStarRotate 220s linear infinite; */
 }
 
 #about_stars::before {
@@ -161,7 +161,7 @@ nav ul li a{
   background-image: radial-gradient(#ffffff 1px, transparent 1%);
   background-size: 80px 80px;
   opacity: 0.5;
-  animation: animAboutStar 120s linear infinite;
+  /* animation: animAboutStar 120s linear infinite; */
 }
 
 
@@ -299,19 +299,19 @@ strong {
 }
 
 .input__container {
-  width: 600px;
+  height: 500px;
+  width: 500px;
+  position: absolute;
   display: none; /* Hide initially */
   flex-direction: column;
   align-items: center;
+  top: 50%;
+  left: 50%;
   gap: 150px;
-  background: rgba(226, 221, 221, 0.1);
-  padding-top: 4%;
-  padding-bottom: 4%;
-  padding-left: 4%;
-  padding-right: 4%;
-  border-radius: 40px;
-  position: absolute;
+  border-radius: 50%;
   transition: opacity 0.7s ease, transform 0.5s ease;
+  animation: rotate_3922 3s linear infinite;
+  background-color: white;
   opacity: 0;
   transform: scale(0); /* Start from a smaller scale */
 }
@@ -322,27 +322,69 @@ strong {
   transform: scale(1); /* Expand to full size */
 }
 
-.input__container::before {
+.input__container::after {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  filter: blur(0.8rem);
-  border-radius: 40px;
-  background-color: #551555;
-  background-image: linear-gradient(
-    137.48deg,
-    #ffdb3b 10%,
-    #fe53bb 45%,
-    #8f51ea 67%,
-    #0044ff 87%
-  );
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: black;
+  border: solid 10px rgb(255, 115, 0);
+  border-radius: 50%;
 }
 
-.input__label {
+.input__container span {
+  position: absolute;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(76, 0, 255);
+}
+
+.input__container span:nth-of-type(1) {
+  filter: blur(5px);
+  background-color: rgb(255, 242, 0);
+}
+
+.input__container span:nth-of-type(2) {
+
+  filter: blur(5px);
+  background-color: rgb(255, 255, 255);
+}
+
+.input_container span:nth-of-type(3) {
+  filter: blur(5px);
+  background-color: rgb(254, 119, 0);
+}
+
+.input_container span:nth-of-type(4) {
+  filter: blur(5px);
+  background-color: rgb(4, 0, 255);
+}
+
+.input_container span:nth-of-type(5) {
+  filter: blur(5px);
+  background-color: rgb(246, 14, 14);
+}
+
+.input__container span:nth-of-type(6) {
+  filter: blur(5px);
+  background-color: rgb(57, 11, 241);
+}
+
+.input__container span:nth-of-type(7) {
+  filter: blur(5px);
+  background-color: rgb(255, 77, 0);
+}
+
+.input__container span:nth-of-type(8) {
+  filter: blur(5px);
+  background-color: rgb(255, 123, 0);
+}
+
+
+/* .input__label {
   display: block; /* Ensure it spans the full width */
   width: 100%;
   font-family: 'Avalors Personal Use';
@@ -353,7 +395,7 @@ strong {
   margin-bottom: 30px;
   text-align: center; /* Corrected invalid value */
   line-height: 1.4;
-}
+} */
 
 .input {
   border: none;
@@ -400,6 +442,55 @@ footer {
   animation: shoot 1.7s linear;
   z-index: 1000; /* Ensure bullets are below the button */
 }
+
+.loader {
+  padding-top: 25px;
+  display: flex;
+  visibility: visible;
+  align-items: center;
+  position: absolute;
+  transition: opacity 1s ease-in;
+  opacity:1;
+}
+
+.loader.dead{
+  opacity: 0;
+}
+
+.bar {
+  display: inline-block;
+  width: 10px;
+  height: 30px;
+  margin: 0 3px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 10px;
+  animation: scale-up4 1s linear infinite;
+}
+
+.bar:nth-child(2) {
+  height: 60px;
+  margin: 0 3px;
+  animation-delay: .25s;
+}
+
+.bar:nth-child(3) {
+  height: 80px;
+  margin: 0 3px;
+  animation-delay: .5s;
+}
+
+.bar:nth-child(4) {
+  height: 60px;
+  margin: 0 3px;
+  animation-delay: .75s;
+}
+
+.bar:nth-child(5) {
+  height: 30px; /* Set the height for the new bar */
+  margin: 0 3px;
+  animation-delay: 1s; /* Set the animation delay for the new bar */
+}
+
 
 /* Shooting animation */
 @keyframes shoot {
@@ -483,54 +574,6 @@ footer {
   }
 }
 
-.loader {
-  padding-top: 25px;
-  display: flex;
-  visibility: visible;
-  align-items: center;
-  position: absolute;
-  transition: opacity 1s ease-in;
-  opacity:1;
-}
-
-.loader.dead{
-  opacity: 0;
-}
-
-.bar {
-  display: inline-block;
-  width: 10px;
-  height: 30px;
-  margin: 0 3px;
-  background-color: rgba(255, 255, 255, .5);
-  border-radius: 10px;
-  animation: scale-up4 1s linear infinite;
-}
-
-.bar:nth-child(2) {
-  height: 60px;
-  margin: 0 3px;
-  animation-delay: .25s;
-}
-
-.bar:nth-child(3) {
-  height: 80px;
-  margin: 0 3px;
-  animation-delay: .5s;
-}
-
-.bar:nth-child(4) {
-  height: 60px;
-  margin: 0 3px;
-  animation-delay: .75s;
-}
-
-.bar:nth-child(5) {
-  height: 30px; /* Set the height for the new bar */
-  margin: 0 3px;
-  animation-delay: 1s; /* Set the animation delay for the new bar */
-}
-
 @keyframes scale-up4 {
   20% {
     background-color: #ffff;
@@ -542,3 +585,24 @@ footer {
   }
 }
 
+@keyframes rotate_3922 {
+  0% {
+    transform: translate(-49%, -49%) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-51%, -51%) rotate(360deg);
+  }
+
+  50% {
+    transform: translate(-49%, -51%) rotate(0deg);
+  }
+
+  75% {
+    transform: translate(-51%, -49%) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(-49%, -49%) rotate(0deg);
+  }
+}
