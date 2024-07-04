@@ -310,10 +310,11 @@ strong {
   gap: 150px;
   border-radius: 50%;
   transition: opacity 0.7s ease, transform 0.5s ease;
-  animation: rotate_3922 3s linear infinite;
-  background-color: white;
+  animation: float 8s ease-in-out infinite alternate, rotate_3922 8s linear infinite ; /* Combined animations */
   opacity: 0;
   transform: scale(0); /* Start from a smaller scale */
+  background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(255, 255, 255) 100%);
+
 }
 
 .input__container.active {
@@ -329,8 +330,7 @@ strong {
   left: 10px;
   right: 10px;
   bottom: 10px;
-  background-color: black;
-  border: solid 10px rgb(255, 115, 0);
+  background: radial-gradient(circle, rgb(0, 0, 0) 68%, rgb(172, 172, 172) 70px, rgb(255, 255, 255) 50px);
   border-radius: 50%;
 }
 
@@ -339,50 +339,56 @@ strong {
   border-radius: 50%;
   height: 100%;
   width: 100%;
-  background-color: rgb(76, 0, 255);
-}
-
-.input__container span:nth-of-type(1) {
-  filter: blur(5px);
-  background-color: rgb(255, 242, 0);
-}
-
-.input__container span:nth-of-type(2) {
-
-  filter: blur(5px);
   background-color: rgb(255, 255, 255);
 }
 
-.input_container span:nth-of-type(3) {
-  filter: blur(5px);
-  background-color: rgb(254, 119, 0);
+.input__container span:nth-of-type(1) {
+  filter: blur(2px);
+  background-color: rgb(247, 247, 247);
+  margin: 10px;
 }
 
-.input_container span:nth-of-type(4) {
-  filter: blur(5px);
-  background-color: rgb(4, 0, 255);
+.input__container span:nth-of-type(2) {
+  filter: blur(4px);
+  background-color: rgb(211, 152, 210);
+  margin: 10px;
 }
 
-.input_container span:nth-of-type(5) {
-  filter: blur(5px);
-  background-color: rgb(246, 14, 14);
+.input__container span:nth-of-type(3) {
+  filter: blur(8px);
+  background-color: rgb(205, 182, 228);
+  margin: 10px;
+}
+
+.input__container span:nth-of-type(4) {
+  filter: blur(14px);
+  background-color: rgb(208, 141, 239);
+  margin: 10px;
+}
+
+.input__container span:nth-of-type(5) {
+  filter: blur(28px);
+  background-color: rgb(240, 120, 220);
+  margin: 10px;
 }
 
 .input__container span:nth-of-type(6) {
-  filter: blur(5px);
-  background-color: rgb(57, 11, 241);
+  filter: blur(56px);
+  background-color: rgb(170, 108, 224);
+  margin: 10px;
 }
 
 .input__container span:nth-of-type(7) {
-  filter: blur(5px);
-  background-color: rgb(255, 77, 0);
+  filter: blur(112px);
+  background-color: rgb(205, 132, 236);
+  margin: 10px;
 }
 
 .input__container span:nth-of-type(8) {
-  filter: blur(5px);
-  background-color: rgb(255, 123, 0);
+  filter: blur(224px);
+  background-color: rgb(214, 127, 231);
+  margin: 10px;
 }
-
 
 /* .input__label {
   display: block; /* Ensure it spans the full width */
@@ -587,22 +593,24 @@ footer {
 
 @keyframes rotate_3922 {
   0% {
-    transform: translate(-49%, -49%) rotate(0deg);
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
   }
-
-  25% {
-    transform: translate(-51%, -51%) rotate(360deg);
-  }
-
-  50% {
-    transform: translate(-49%, -51%) rotate(0deg);
-  }
-
-  75% {
-    transform: translate(-51%, -49%) rotate(360deg);
-  }
-
   100% {
-    transform: translate(-49%, -49%) rotate(0deg);
+    transform: translateX(-50%) translateY(-50%) rotate(720deg);
+  }
+}
+
+@keyframes float{
+    0% {
+    transform: translateX(-52%) translateY(-48%) 
+  }
+  25% {
+    transform: translateX(-48%) translateY(-48%)
+  }
+  75% {
+    transform: translateX(-52%) translateY(-52%) 
+  }
+  100% {
+    transform: translateX(-48%) translateY(-52%) 
   }
 }
