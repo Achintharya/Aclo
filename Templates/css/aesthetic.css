@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(4, 1, 12);
+  background-color: rgb(0, 0, 0);
   color: aliceblue;
 }
 
@@ -8,12 +8,9 @@ body, * {
 }
 
 #header {
-
-
   width: 100%;
   background-size: cover;
-  background-position: center;
-  position: relative; /* Corrected spacing */
+  position: relative;
   top: 0;
   position: sticky;
   z-index: 1;
@@ -22,30 +19,28 @@ body, * {
 nav {
   display: inline-flex;
   width: 100%;
-  align-items: center;
-  justify-content: flex-end; /* Align items to the right */
+  align-items: left;
+  justify-content: space-between; /* Align items to the left */
   flex-wrap: wrap;
 }
 
 nav ul li{
   display: inline-block;
-  padding-right: 7px;
 }
 
 nav ul li a{
   text-decoration: none;
   color: transparent;
   -webkit-text-stroke: 0.45px var(--text-stroke-color);
-
 }
 
 /* button styling */
 .nav_button {
-  --border-right: 4px;
+  --border-right: 2px;
   --text-stroke-color: rgb(240, 248, 255);
-  --animation-color: #37FF8B;
-  --fs-size: 1.2em;
-  letter-spacing: 6.5px;
+  --animation-color: #ff8420;
+  --fs-size: 1em;
+  letter-spacing: 8px;
   font-size: var(--fs-size);
   font-family: "Avalors Personal Use";
   position: relative;
@@ -68,11 +63,10 @@ nav ul li a{
 /* hover */
 .nav_button:hover .hover-text {
   width: 90%;
-  filter: drop-shadow(0 0 20px var(--animation-color))
+  filter: drop-shadow(0 0 10px var(--animation-color))
 }
 
 #Home{
-
   padding-left: 50px;
   padding-top: 50px;
   background-image: url(https://4kwallpapers.com/images/walls/thumbs_3t/6409.jpg);
@@ -84,12 +78,12 @@ nav ul li a{
 }
 
 #Home.hide{
-  opacity: 0.5;
+  opacity: 0.3;
 }
-
 
 #Home h1 {
   font-family: 'Papyrus', fantasy, sans-serif;
+  font-size: 2.5em;
   color: aliceblue;
   width: 100%;
   height: 100vh;
@@ -98,7 +92,7 @@ nav ul li a{
 }
 
 #Home h1 span {
-  background: linear-gradient(137.48deg, #ffdb3b 10%, #fe53bb 45%, #8f51ea 67%, #0044ff 87%);
+  background: linear-gradient(137.48deg, #ffd900 10%, #ff9900 45%, #ff7300 67%, #ff5500 87%);
   background-clip: text;
   color: transparent;
 }
@@ -112,12 +106,15 @@ nav ul li a{
   opacity: 0; /* Initially hidden */
   transition: opacity 1.5s ease-in-out; /* Smooth transition */
   position: relative;
+  user-select: none; /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 #about.visible {
   opacity: 1; /* Fully visible */
 }
-
 
 #about_container-stars {
   position: absolute;
@@ -126,7 +123,7 @@ nav ul li a{
   height: 100%;
   overflow: hidden;
   transition: 0.5s;
-  backdrop-filter: blur(1.5rem);
+  backdrop-filter: blur(16.5px);
   border-radius: 5rem;/
 }
 
@@ -145,24 +142,24 @@ nav ul li a{
   width: 100%;
   height: 100%;
   background-image: radial-gradient(#ffffff 1px, transparent 1%);
-  background-size: 80px 80px;
+  background-size: 120px 120px;
   opacity:0.5;
-  animation: animAboutStarRotate 220s linear infinite;
+  animation: AboutStarClock 150s linear infinite;
 }
 
 #about_stars::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -50%;
-  width: 170%;
-  height: 500%;
+  top: -10rem;
+  left: -100rem;
+  width: 100%;
+  height: 100%;
   background-image: radial-gradient(#ffffff 1px, transparent 1%);
-  background-size: 80px 80px;
-  opacity: 0.5;
-  animation: animAboutStar 120s linear infinite;
-}
+  background-size: 120px 120px;
 
+  opacity:0.5;
+  animation: AboutStarAntiClock 120s linear infinite;
+}
 
 #AI_me h1 {
   margin: 50px;
@@ -201,7 +198,6 @@ nav ul li a{
   position: relative; /* Ensure the pseudo-element is positioned relative to the button */
   z-index: 1001; /* Ensure this element is above bullets */
 }
-
 
 #container-stars {
   position: absolute;
@@ -245,14 +241,14 @@ strong {
   background: rgba(142, 81, 234, 0.704);
 }
 
-.btn:hover #container-stars{
-  background-color: #212121;
+.btn:hover #container-stars,
+.btn.hover #container-stars{
+  background-color: #181818;
 }
 
 .btn:hover, .btn.hover {
   transform: scale(1.3);
 }
-
 
 .btn:active {
   border: double 4px #FE53BB;
@@ -297,18 +293,114 @@ strong {
   animation: animStar 60s linear infinite;
 }
 
-.input__container {
-  width: 600px;
+.container {
+  display: none; /*hide until shooter win */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the container */
+  border-radius: 50%;
+  height: 500px;
+  width: 500px;
+  animation: float_4096 2s linear infinite alternate, rotate_3922 10s linear infinite;
+  z-index: -1;
+}
+
+.container.active {
+  display: flex; /* Show the container */
+  opacity: 1;
+  transform: scale(1); /* Expand to full size */
+}
+
+/* Add the input container inside the black hole */
+.container .input__container {
+  width: 550px;
+  height: 550px;
   display: none; /* Hide initially */
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  background: rgba(226, 221, 221, 0.1);
-  padding-top: 4%;
-  padding-bottom: 4%;
-  padding-left: 4%;
-  padding-right: 4%;
-  border-radius: 40px;
+  position: absolute;
+  transition: opacity 0.7s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: scale(0); /* Start from a smaller scale */
+  z-index: 1; /* Ensure it is above the black hole */
+}
+
+.container .input__container.active {
+  display: grid; /* Show the container */
+  opacity: 1;
+  transform: scale(1); /* Expand to full size */
+}
+
+.container span {
+  position: absolute;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  z-index: -1;
+}
+
+.container span:nth-of-type(1) {
+  filter: blur(20px);
+  background-color: red;
+}
+
+.container span:nth-of-type(2) {
+  filter: blur(10px);
+  background-color: white;
+}
+
+.container span:nth-of-type(3) {
+  filter: blur(10px);
+  background-color: orange;
+}
+
+.container span:nth-of-type(4) {
+  filter: blur(10px);
+  background-color: rgb(255, 35, 35);
+}
+
+.container span:nth-of-type(5) {
+  filter: blur(20px);
+  background-color: rgb(255, 64, 0);
+}
+
+.container span:nth-of-type(6) {
+  filter: blur(40px);
+  background-color: rgb(255, 242, 0);
+}
+
+.container span:nth-of-type(7) {
+  filter: blur(60px);
+  background-color: rgb(255, 140, 0);
+}
+
+.container span:nth-of-type(8) {
+  filter: blur(100px);
+  background-color: rgb(255, 132, 0);
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: radial-gradient(circle, #000000 50%, #121212 100%);
+  border: solid 5px #ffffff;
+  filter: blur(2px);
+  border-radius: 50%;
+  z-index: -1;
+}
+.input__container {
+  width: 650px;
+  height: 500px;
+  border-radius: 100%;
+  display: none; /* Hide initially */
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   transition: opacity 0.7s ease, transform 0.5s ease;
   opacity: 0;
@@ -316,54 +408,38 @@ strong {
 }
 
 .input__container.active {
-  display: flex; /* Show the container */
+  display: grid; /* Show the container */
   opacity: 1;
   transform: scale(1); /* Expand to full size */
 }
 
-.input__container::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  filter: blur(0.8rem);
-  border-radius: 40px;
-  background-color: #551555;
-  background-image: linear-gradient(
-    137.48deg,
-    #ffdb3b 10%,
-    #fe53bb 45%,
-    #8f51ea 67%,
-    #0044ff 87%
-  );
-}
-
 .input__label {
-  display: block; /* Ensure it spans the full width */
-  width: 100%;
+  display: grid; /* Ensure it spans the full width */
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  border-radius: 50%;
   font-family: 'Avalors Personal Use';
-  color: #000000;
+  color: #ffffff;
   text-transform: capitalize;
   font-size: 1em;
   font-weight: bold;
-  margin-bottom: 30px;
-  text-align: center; /* Corrected invalid value */
+  text-align: justify;
+  align-items: center;
   line-height: 1.4;
+  z-index: 1000;
 }
 
 .input {
   border: none;
   outline: none;
-  width: 100%;
-  height: 100%;
+  width: 41%;
   padding: 0.6em;
   padding-left: 0.9em;
   border-radius: 20px;
   background: #fff;
   transition: background 300ms, color 300ms;
+  margin-bottom: 13%;
 }
 
 .input:hover,
@@ -372,9 +448,10 @@ strong {
   color: #fff;
 }
 
-
 .loader {
-  padding-top: 25px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   visibility: visible;
   align-items: center;
@@ -383,7 +460,7 @@ strong {
   opacity:1;
 }
 
-.loader.dead{
+.loader.dead {
   opacity: 0;
 }
 
@@ -421,33 +498,32 @@ strong {
   animation-delay: 1s; /* Set the animation delay for the new bar */
 }
 
-
-#stalk_me{
-  width: 100%;
-  height:40vh;
-}
-
-footer {
-  background-color: black;
-  color: aliceblue;
-  text-align: center;
-  padding: 0.2px;
-  position: static;
-  width: 100%;
-}
-
 /* Bullet styling */
 .bullet {
   position: absolute;
   width: 3px;
-  height: 10px;
-  background-image: linear-gradient(#39fd8a 40%, #77ffb0, #a6f6c7, #c3f6d8, #ffffff);
+  height: 15px;
+  background-image: linear-gradient(#ff0000 40%, #ff4400, #ff7b00, #ffbd52, #ffffff);
   border-radius: 5%;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
   pointer-events: none; /* Allow clicks to pass through */
   animation: shoot 1.7s linear;
   z-index: 1000; /* Ensure bullets are below the button */
+}
+
+#stalk_me{
+  width: 100%;
+  height:100vh;
+  position: relative;
+}
+
+footer {
+  width: 100%;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+  z-index: 1;
 }
 
 /* Shooting animation */
@@ -479,24 +555,24 @@ footer {
   }
 }
 
-@keyframes animAboutStar {
-  from {
-    transform: translateY(-135rem);
-    
-  }
-
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes animAboutStarRotate {
+@keyframes AboutStarClock {
   from {
     transform: rotate(0);
   }
 
   to {
-    transform: rotate(360deg);
+    transform: rotate(720deg);
+    
+  }
+}
+
+@keyframes AboutStarAntiClock {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(-720deg);
     
   }
 }
@@ -540,5 +616,30 @@ footer {
 
   40% {
     transform: scaleY(1);
+  }
+}
+
+@keyframes float_4096{
+  0%{
+      transform: translateX(-52%) translateY(-48%);
+    }
+  25%{
+      transform: translateX(-48%) translateY(-48%);
+    }
+  75%{
+      transform: translateX(-52%) translateY(-52%);
+    }
+  100%{
+      transform: translateX(-48%) translateY(-52%);
+    }
+  }
+
+@keyframes rotate_3922 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }

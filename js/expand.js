@@ -1,5 +1,6 @@
 function expandContainer() {
     console.log("expandContainer function called");
+    const black_hole = document.getElementById('black_hole') 
     const buttonContainer = document.getElementById('buttonContainer');
     const inputContainer = document.getElementById('inputContainer');
     const inputText = document.getElementById('inputText');
@@ -26,6 +27,7 @@ function expandContainer() {
 
     setTimeout(() => {
         inputContainer.classList.add('active');
+        black_hole.classList.add('active');
         console.log("inputContainer displayed");
     }, 10); // Small delay to allow the display change to take effect
 

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const aboutSection = document.getElementById('about');
   const button = document.querySelector('.btn');
   let clickCount = 0;
-  const requiredClicks = 5; // Set the number of clicks required
+  const requiredClicks = 2; // Set the number of clicks required
 
   if (aboutSection && button) {
     console.log('about container and button found');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(`Click at (${x}, ${y}) relative to container`);
 
       // Check if the click is within the defined region
-      if (y >= 500) {
+      if (y >= 500 && y<= 1000) {
         console.log(`Shooting bullet at (${x}, ${y}) within the allowed region`);
 
         const bullet = document.createElement('div');
