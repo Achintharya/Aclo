@@ -15,6 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleScroll() {
     const sectionTop = aboutSection.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
+    const homeSection = document.getElementById('Home');
+    const scrollPosition = window.scrollY;
+
+    // Adjust the threshold value as needed
+    const threshold = 100;
+
+    if (scrollPosition > threshold) {
+      homeSection.classList.add('zoom');
+    } else {
+      homeSection.classList.remove('zoom');
+    }
 
     if (sectionTop < windowHeight) {
       homeSection.classList.add('hide');
