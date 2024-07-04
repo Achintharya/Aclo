@@ -76,12 +76,11 @@ nav ul li a{
   padding-left: 50px;
   padding-top: 50px;
   background-image: url(https://4kwallpapers.com/images/walls/thumbs_3t/6409.jpg);
-  transform: translateZ(100rem);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 1;
-  transition: opacity 0.5s ease-in-out; /* Smooth transition */
+  transition: opacity 0.6s ease-in-out; /* Smooth transition */
 }
 
 #Home.hide{
@@ -111,7 +110,7 @@ nav ul li a{
   width: 100%;
   height: 100vh;
   opacity: 0; /* Initially hidden */
-  transition: opacity 1s ease-in-out; /* Smooth transition */
+  transition: opacity 1.5s ease-in-out; /* Smooth transition */
   position: relative;
 }
 
@@ -148,7 +147,7 @@ nav ul li a{
   background-image: radial-gradient(#ffffff 1px, transparent 1%);
   background-size: 80px 80px;
   opacity:0.5;
-  /* animation: animAboutStarRotate 220s linear infinite; */
+  animation: animAboutStarRotate 220s linear infinite;
 }
 
 #about_stars::before {
@@ -161,7 +160,7 @@ nav ul li a{
   background-image: radial-gradient(#ffffff 1px, transparent 1%);
   background-size: 80px 80px;
   opacity: 0.5;
-  /* animation: animAboutStar 120s linear infinite; */
+  animation: animAboutStar 120s linear infinite;
 }
 
 
@@ -299,22 +298,21 @@ strong {
 }
 
 .input__container {
-  height: 500px;
-  width: 500px;
-  position: absolute;
+  width: 600px;
   display: none; /* Hide initially */
   flex-direction: column;
   align-items: center;
-  top: 50%;
-  left: 50%;
-  gap: 150px;
-  border-radius: 50%;
+  gap: 20px;
+  background: rgba(226, 221, 221, 0.1);
+  padding-top: 4%;
+  padding-bottom: 4%;
+  padding-left: 4%;
+  padding-right: 4%;
+  border-radius: 40px;
+  position: absolute;
   transition: opacity 0.7s ease, transform 0.5s ease;
-  animation: float 8s ease-in-out infinite alternate, rotate_3922 8s linear infinite ; /* Combined animations */
   opacity: 0;
   transform: scale(0); /* Start from a smaller scale */
-  background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(255, 255, 255) 100%);
-
 }
 
 .input__container.active {
@@ -323,74 +321,27 @@ strong {
   transform: scale(1); /* Expand to full size */
 }
 
-.input__container::after {
+.input__container::before {
   content: "";
   position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  background: radial-gradient(circle, rgb(0, 0, 0) 68%, rgb(172, 172, 172) 70px, rgb(255, 255, 255) 50px);
-  border-radius: 50%;
-}
-
-.input__container span {
-  position: absolute;
-  border-radius: 50%;
-  height: 100%;
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(0.8rem);
+  border-radius: 40px;
+  background-color: #551555;
+  background-image: linear-gradient(
+    137.48deg,
+    #ffdb3b 10%,
+    #fe53bb 45%,
+    #8f51ea 67%,
+    #0044ff 87%
+  );
 }
 
-.input__container span:nth-of-type(1) {
-  filter: blur(2px);
-  background-color: rgb(247, 247, 247);
-  margin: 10px;
-}
-
-.input__container span:nth-of-type(2) {
-  filter: blur(4px);
-  background-color: rgb(211, 152, 210);
-  margin: 10px;
-}
-
-.input__container span:nth-of-type(3) {
-  filter: blur(8px);
-  background-color: rgb(205, 182, 228);
-  margin: 10px;
-}
-
-.input__container span:nth-of-type(4) {
-  filter: blur(14px);
-  background-color: rgb(208, 141, 239);
-  margin: 10px;
-}
-
-.input__container span:nth-of-type(5) {
-  filter: blur(28px);
-  background-color: rgb(240, 120, 220);
-  margin: 10px;
-}
-
-.input__container span:nth-of-type(6) {
-  filter: blur(56px);
-  background-color: rgb(170, 108, 224);
-  margin: 10px;
-}
-
-.input__container span:nth-of-type(7) {
-  filter: blur(112px);
-  background-color: rgb(205, 132, 236);
-  margin: 10px;
-}
-
-.input__container span:nth-of-type(8) {
-  filter: blur(224px);
-  background-color: rgb(214, 127, 231);
-  margin: 10px;
-}
-
-/* .input__label {
+.input__label {
   display: block; /* Ensure it spans the full width */
   width: 100%;
   font-family: 'Avalors Personal Use';
@@ -401,7 +352,7 @@ strong {
   margin-bottom: 30px;
   text-align: center; /* Corrected invalid value */
   line-height: 1.4;
-} */
+}
 
 .input {
   border: none;
@@ -421,33 +372,6 @@ strong {
   color: #fff;
 }
 
-#stalk_me{
-  width: 100%;
-  height:40vh;
-}
-
-footer {
-  background-color: black;
-  color: aliceblue;
-  text-align: center;
-  padding: 0.2px;
-  position: static;
-  width: 100%;
-}
-
-/* Bullet styling */
-.bullet {
-  position: absolute;
-  width: 3px;
-  height: 10px;
-  background-image: linear-gradient(#39fd8a 40%, #77ffb0, #a6f6c7, #c3f6d8, #ffffff);
-  border-radius: 5%;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  pointer-events: none; /* Allow clicks to pass through */
-  animation: shoot 1.7s linear;
-  z-index: 1000; /* Ensure bullets are below the button */
-}
 
 .loader {
   padding-top: 25px;
@@ -497,6 +421,34 @@ footer {
   animation-delay: 1s; /* Set the animation delay for the new bar */
 }
 
+
+#stalk_me{
+  width: 100%;
+  height:40vh;
+}
+
+footer {
+  background-color: black;
+  color: aliceblue;
+  text-align: center;
+  padding: 0.2px;
+  position: static;
+  width: 100%;
+}
+
+/* Bullet styling */
+.bullet {
+  position: absolute;
+  width: 3px;
+  height: 10px;
+  background-image: linear-gradient(#39fd8a 40%, #77ffb0, #a6f6c7, #c3f6d8, #ffffff);
+  border-radius: 5%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  pointer-events: none; /* Allow clicks to pass through */
+  animation: shoot 1.7s linear;
+  z-index: 1000; /* Ensure bullets are below the button */
+}
 
 /* Shooting animation */
 @keyframes shoot {
@@ -588,29 +540,5 @@ footer {
 
   40% {
     transform: scaleY(1);
-  }
-}
-
-@keyframes rotate_3922 {
-  0% {
-    transform: translateX(-50%) translateY(-50%) rotate(0deg);
-  }
-  100% {
-    transform: translateX(-50%) translateY(-50%) rotate(720deg);
-  }
-}
-
-@keyframes float{
-    0% {
-    transform: translateX(-52%) translateY(-48%) 
-  }
-  25% {
-    transform: translateX(-48%) translateY(-48%)
-  }
-  75% {
-    transform: translateX(-52%) translateY(-52%) 
-  }
-  100% {
-    transform: translateX(-48%) translateY(-52%) 
   }
 }
