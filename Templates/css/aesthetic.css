@@ -5,12 +5,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Star Jedi Hollow';
-  src: url('fonts/Starjhollow.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 @font-face {
   font-family: 'CANAVAR Extra';
@@ -103,7 +97,7 @@ nav ul li a{
 }
 
 #Home h1 {
-  font-family: 'Star Jedi Hollow';
+  font-family: 'CANAVAR Extra';
   font-size: 2.5em;
   letter-spacing: 6px;
   color: aliceblue;

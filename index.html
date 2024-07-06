@@ -8,7 +8,7 @@
     <meta name="description" content="This is Achintharya's portfolio">
     <title>temp
     </title>
-    <link rel="stylesheet" href="Templates/css/aesthetic.css">
+    <link rel="stylesheet" href="Templates/css/temp.css">
     <script type="module">
         import { processInput } from './js/web_AIA.mjs';
         console.log("processInput function imported");
@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="header">
-        <nav>
+        <nav id = "navLink">
             <ul>
                 <li class="nav_button">
                     <a href="#Home">
@@ -49,14 +49,16 @@
     </div>
 
     <div id="Home">
-        <h1>hello! i am <span>achintharya</span><br> ai and machine learning engineer.</h1>
+        <div id="moon"></div>
+        <div id="comet"></div>
+        <h1>Hello I am <span>Achintharya</span> AI and Machine Learning engineer.</h1>
+        
     </div>
 
     <div id="about">
         <div id="about_container-stars">
             <div id="about_stars"></div>
         </div>
-
         <div id="AI_me">
             <h1></h1>
         </div> 
@@ -120,7 +122,8 @@
     <script src="./js/expand.js"></script>
     <script src="./js/inputHandler.js"></script>
     <script src="./js/shooter.js"></script>
-    <script src="./js/load_AIA.js"></script> 
+    <script src="./js/load_AIA.js"></script>
+    <script src="./js/moon.js"></script>
     
 </body>
 </html>
