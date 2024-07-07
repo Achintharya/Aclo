@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Achintharya">
     <meta name="description" content="This is Achintharya's portfolio">
-    <title>Achintharya Patil
+    <title>temp
     </title>
-    <link rel="stylesheet" href="Templates/css/aesthetic.css">
+    <link rel="stylesheet" href="Templates/css/temp.css">
     <script type="module">
         import { processInput } from './js/web_AIA.mjs';
         console.log("processInput function imported");
@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="header">
-        <nav>
+        <nav id = "navLink">
             <ul>
                 <li class="nav_button">
                     <a href="#Home">
@@ -49,14 +49,21 @@
     </div>
 
     <div id="Home">
-        <h1>Hello! I am <span>Achintharya</span><br> AI and Machine Learning engineer.</h1>
+        <div class="home-bg playing">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>           
+        </div>
+        <div id="moon"></div>
+        <h1>Hello I am <span>Achintharya</span> AI and Machine Learning engineer.</h1>
+        
     </div>
 
     <div id="about">
+        <img id="comet" src= "https://gd-hbimg.huaban.com/c8ecad5742c8ca28752c8d12bd579ae91e2c9d5a3f6cf-gqRGsf_fw658" >
         <div id="about_container-stars">
             <div id="about_stars"></div>
         </div>
-
         <div id="AI_me">
             <h1></h1>
         </div> 
@@ -120,7 +127,8 @@
     <script src="./js/expand.js"></script>
     <script src="./js/inputHandler.js"></script>
     <script src="./js/shooter.js"></script>
-    <script src="./js/load_AIA.js"></script> 
+    <script src="./js/load_AIA.js"></script>
+    <script src="./js/moon.js"></script>
     
 </body>
 </html>
