@@ -4,6 +4,7 @@ function expandContainer() {
     const buttonContainer = document.getElementById('buttonContainer');
     const inputContainer = document.getElementById('inputContainer');
     const inputText = document.getElementById('inputText');
+    const aboutH = document.getElementById('about_h');
 
     // Check if elements are found
     if (!buttonContainer) {
@@ -21,6 +22,8 @@ function expandContainer() {
 
     // Hide the button container
     buttonContainer.style.display = 'none';
+    aboutH.style.display = 'none';
+
     console.log("buttonContainer hidden");
     
     inputContainer.style.display = 'flex'; // Ensure it's displayed

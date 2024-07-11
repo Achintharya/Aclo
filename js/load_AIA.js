@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM fully loaded and parsed");
-  const button = document.querySelector('.btn');
   const inputText = document.getElementById('inputText');
   if (inputText) {
     inputText.addEventListener('keypress', window.handleInput);
@@ -13,10 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleScroll() {
     const sectionTop = aboutSection.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
-    const homeSection = document.getElementById('Home');
-
-    // Adjust the threshold value as needed
-    const threshold = 100;
 
 
     if (sectionTop < windowHeight) {
@@ -34,8 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', () => {
     const starContainer = document.querySelector('#about_stars');
     const star1Count = 250; // Number of stars in bg 1
-    const star2Count = 70; // Number of stars in bg 2
+    const star2Count = 50; // Number of stars in bg 2
     const star3Count = 50; // Number of stars in bg 3
+    const star4Count = 300; // Number of stars in bg 4
 
     for (let i = 0; i < star1Count; i++) {
       const star1 = document.createElement('div');
@@ -59,5 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
       star3.style.top = `${Math.random() * 100}%`;
       star3.style.left = `${Math.random() * 100}%`;
       starContainer.appendChild(star3);
+    }
+
+    for (let i = 0; i < star4Count; i++) {
+      const star4 = document.createElement('div');
+      star4.classList.add('star-bg4');
+      star4.style.top = `${Math.random() * 100}%`;
+      star4.style.left = `${Math.random() * 100}%`;
+      starContainer.appendChild(star4);
     }
   });
