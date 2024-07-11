@@ -43,8 +43,8 @@ document.addEventListener(
 
         // Update the TIE position with oscillation
         f.style.transform = `translate(${targetX + oscillation}px, ${targetY - 100}px) ${rotation}`;
-        f2.style.transform = `translate(${targetX + 100 }px, ${targetY - oscillation}px) ${rotation}`;
-        f3.style.transform = `translate(${targetX - 100}px, ${targetY + oscillation}px) ${rotation}`;
+        f2.style.transform = `translate(${targetX + 100 + oscillation }px, ${targetY + oscillation}px) ${rotation}`;
+        f3.style.transform = `translate(${targetX - 100 - oscillation}px, ${targetY + oscillation}px) ${rotation}`;
 
         requestAnimationFrame(animateTIE);
         }

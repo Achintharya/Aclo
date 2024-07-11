@@ -309,6 +309,42 @@ nav ul li a{
   animation: twinkle 6s infinite ease-in-out 1s alternate;
 }
 
+/* Shooting Stars Animation for Entire Window */
+.shooting-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ensure it doesn't interfere with other elements */
+  overflow: hidden;
+  z-index: 19999; /* Ensure it is on top of other elements */
+}
+
+.shooting-stars::before,
+.shooting-stars::after {
+  content: "";
+  position: absolute;
+  width: 5em;
+  height: 1px;
+  background: linear-gradient(90deg, #ffffff, transparent);
+  animation: 4s shootingStar ease-in-out infinite;
+}
+
+.shooting-stars::before {
+  top: -700%;
+  left: 1050%;
+  rotate: -45deg;
+  animation-delay: 1s;
+}
+
+.shooting-stars::after {
+  top: -1300%;
+  left: 850%;
+  rotate: -45deg;
+  animation-delay: 3s;
+}
+
 .button-container {
   position: absolute;
   z-index: 1001; /* Ensure this element is above bullets */
@@ -648,6 +684,7 @@ strong {
   justify-content: space-between;
   align-items: center;
   margin: 50px;
+  padding: 50px;
   height: 100vh;
 }
 
@@ -946,11 +983,11 @@ footer {
   }
 
   50% {
-    transform: translateX(-48%) translateY(-52%) rotate(360deg);
+    transform: translateX(-48%) translateY(-52%) rotate(540deg);
   }
 
   75% {
-    transform: translateX(-52%) translateY(-52%) rotate(360deg);
+    transform: translateX(-52%) translateY(-52%) rotate(180deg);
   }
 
   100% {
@@ -1000,3 +1037,21 @@ footer {
   }
 }
 
+@keyframes shootingStar {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-55em) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(-70em) translateY(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0.5;
+  }
+}
