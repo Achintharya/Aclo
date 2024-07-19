@@ -98,12 +98,19 @@ function shootattack() {
             attack.remove();
             console.log('Attack removed upon hitting the cursor box');
 
-            hitCounter++; // Increment the hit counter
+            // Check if the TIE element still exists before incrementing hitCounter
+            if (document.getElementById('TIE')) {
+                hitCounter++; // Increment the hit counter
 
-            // Display the popup after 5 hits
-            if (hitCounter === 10) {
-                cursorBox.style.backgroundColor = 'red';
-                hitCounter = 0;
+                if (hitCounter === 10) {
+                    const aboutH2 = document.getElementById('about_h');
+                    aboutH2.textContent = 'Oh no! you are hit, try again :(';
+                    aboutH2.style.fontSize='2.5em';
+                    cursorBox.style.backgroundColor = 'red';
+                    setTimeout(() => {
+                        location.reload(true); // Refresh the page
+                    }, 1000);
+                }
             }
           } else {
             requestAnimationFrame(checkCollisionWithCursorBox);
@@ -147,6 +154,6 @@ const attackInterval = setInterval(() => {
   } catch (error) {
     console.error("Error in setInterval for shootattack:", error);
   }
-}, 850); // Adjust the interval as needed
+}, 850);
 
 window.animateTIE = animateTIE;

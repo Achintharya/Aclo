@@ -35,7 +35,7 @@ html {
 body {
   background-color: rgb(0, 0, 0);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   color: rgb(201, 251, 253);
 }
 
@@ -46,10 +46,9 @@ body, * {
 #header {
   width: 100%;
   background-size: cover;
-  position: relative;
   top: 0;
   position: sticky;
-  z-index: 5000;
+  z-index: 10000;
 }
 
 nav {
@@ -59,17 +58,19 @@ nav {
   align-items: left;
   justify-content: space-between; /* Align items to the left */
   flex-wrap: wrap;
-  z-index: 5000;
+  z-index: 10000;
 }
 
 nav ul li{
   display: inline-block;
+  z-index: 10000;
 }
 
 nav ul li a{
   text-decoration: none;
   color: transparent;
   -webkit-text-stroke: 0.45px var(--text-stroke-color);
+  z-index: 10000;
 }
 
 /* button styling */
@@ -77,13 +78,13 @@ nav ul li a{
   --border-right: 2px;
   --text-stroke-color: rgb(229, 254, 255);
   --animation-color: #ff8420;
-  --fs-size: 0.6em;
+  --fs-size: 0.8em;
   letter-spacing: 8px;
   font-size: var(--fs-size);
   font-family: "CANAVAR Extra";
   position: relative;
   text-transform: uppercase;
-  z-index: 5000;
+  z-index: 10000;
 }
 
 /* this is the text, when you hover on button */
@@ -98,13 +99,13 @@ nav ul li a{
   overflow: hidden;
   transition: 0.5s;
   -webkit-text-stroke: 1px var(--animation-color);
-  z-index: 5000;
+  z-index: 10000;
 }
 /* hover */
 .nav_button:hover .hover-text {
   width: 90%;
-  filter: drop-shadow(0 0 10px var(--animation-color))
-  z-index: 5000;
+  filter: drop-shadow(0 0 10px var(--animation-color));
+  z-index: 10000;
 }
 
 #Home{
@@ -112,7 +113,8 @@ nav ul li a{
   width: 100%;
   height: 100vh;
   z-index: -1;
-  overflow: hidden;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 #Home h1 {
@@ -672,11 +674,13 @@ strong {
   animation-delay: 1s; /* Set the animation delay for the new bar */
 }
 
-
-
 #projects {
   width: 100%;
   height: 100vh;
+}
+
+#projects h1{
+  color:#000;
 }
 
 .parent-container {
@@ -684,14 +688,14 @@ strong {
   justify-content: space-between;
   align-items: center;
   margin: 50px;
-  padding: 50px;
-  height: 100vh;
+  padding: 100px;
+  height: 70vh;
 }
 
 .obj1 {
   position: relative;
-  width: 250px;
-  height: 350px;
+  width: 30em;
+  height: 40em;
   transform-style: preserve-3d;
   transition: 0.5s all;
   transform: scale(0.5) rotateX(-25deg) rotateY(0deg);
@@ -705,17 +709,8 @@ strong {
   height: 100%;
 }
 
-.obj1:hover {
-  transform: scale(1) rotateX(45deg) rotateY(0deg) ; /* Reset to 2D */
-}
-
-.obj1child:hover {
-  animation: none;
-  transform: scale(1) rotateX(45deg) rotateY(0deg) ; /* Reset to 2D */
-}
-
-.obj1:hover .obj11child::after,
-.objchild:hover::after {
+.obj1:hover .obj1child::after,
+.obj1child:hover::after {
   opacity: 0; /* Make the pseudo-element disappear */
 }
 
@@ -733,15 +728,15 @@ strong {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: white;
+  background: rgb(180, 218, 220);
   transform: rotateX(90deg) translateZ(100px);
   animation: updown 4s infinite ease-in-out;
 }
 
 .obj2 {
   position: relative;
-  width: 250px;
-  height: 350px;
+  width: 30em;
+  height: 40em;
   transform-style: preserve-3d;
   transition: 0.5s all;
   transform: scale(0.5) rotateX(-25deg) rotateY(0deg);
@@ -755,14 +750,6 @@ strong {
   height: 100%;
 }
 
-.obj2:hover {
-  transform: scale(1) rotateX(45deg) rotateY(0deg) ; /* Reset to 2D */
-}
-
-.obj2child:hover {
-  animation: none;
-  transform: scale(1) rotateX(45deg) rotateY(0deg) ; /* Reset to 2D */
-}
 
 .obj2:hover .objchild::after,
 .obj2child:hover::after {
@@ -783,15 +770,15 @@ strong {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: white;
+  background: rgb(226, 232, 198);
   transform: rotateX(90deg) translateZ(100px);
   animation: updown 4s infinite ease-in-out;
 }
 
 .obj3 {
   position: relative;
-  width: 250px;
-  height: 350px;
+  width: 30em;
+  height: 40em;
   transform-style: preserve-3d;
   transition: 0.5s all;
   transform: scale(0.5) rotateX(-25deg) rotateY(0deg);
@@ -805,16 +792,7 @@ strong {
   height: 100%;
 }
 
-.obj3:hover {
-  transform: scale(1) rotateX(45deg) rotateY(0deg) ; /* Reset to 2D */
-}
-
-.obj3child:hover {
-  animation: none;
-  transform: scale(1) rotateX(45deg) rotateY(0deg) ; /* Reset to 2D */
-}
-
-.ob:hover .obj3child::after,
+.obj3:hover .obj3child::after,
 .obj3child:hover::after {
   opacity: 0; /* Make the pseudo-element disappear */
 }
@@ -833,10 +811,21 @@ strong {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: white;
+  background: rgb(230, 208, 208);
   transform: rotateX(90deg) translateZ(100px);
   animation: updown 4s infinite ease-in-out;
 }
+
+.obj1:hover, .obj2:hover, .obj3:hover {
+  transform: scale(1) rotateX(-45deg) rotateY(0deg); /* Reset to 2D */
+  animation:none; /* Pause animation on hover */
+}
+
+.obj1child:hover, .obj2child:hover, .obj3child:hover {
+  animation:none;
+  transform: scale(1) rotateX(-45deg) rotateY(0deg) ; /* Reset to 2D */
+}
+
 
 #stalk_me{
   width: 100%;
