@@ -24,8 +24,7 @@ function stopParallax(){
 
     if (bg && moon) {
       bg.style.top = '0%'; // Reset background position
-      moon.style.left = '0%'; // Reset moon position
-      moon.style.backgroundSize = '40%'; // Reset moon size
+      moon.style.backgroundSize = '1%'; // Reset moon size
       bg.scrollIntoView({
         behavior: 'smooth'
       })

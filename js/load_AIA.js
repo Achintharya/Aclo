@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("DOM fully loaded and parsed");
   const inputText = document.getElementById('inputText');
   if (inputText) {
     inputText.addEventListener('keypress', window.handleInput);
@@ -65,3 +64,39 @@ document.addEventListener('DOMContentLoaded', () => {
       starContainer.appendChild(star4);
     }
   });
+
+// Get the toggle switch input element
+const toggleSwitch = document.querySelector('.bb8-toggle__checkbox');
+
+// Function to check the state of the toggle switch
+function checkToggleState() {
+    if (toggleSwitch.checked) {
+        console.log("cool stuff only");
+    } else {
+        console.log("Toggle switch is OFF");
+    }
+}
+
+// Event listener for the toggle switch
+toggleSwitch.addEventListener("change", function() {
+    const boring = document.getElementById("just_text");
+    const cool = document.getElementById("coolStuff");
+
+    if (this.checked) {
+        // Hide main content and show game content
+        boring.style.display = "none";
+        cool.style.display = "grid"; // Show coolStuff
+        startAttack();
+        startShooting();
+        this.setAttribute("aria-checked", "true"); // Update aria attribute
+    } else {
+        // Show main content and hide game content
+        console.log("boring stuff only");
+        boring.style.display = "grid"; // Show just_text
+        cool.style.display = "none"; // Hide coolStuff
+        this.setAttribute("aria-checked", "false"); // Update aria attribute
+    }
+
+    // Check the toggle state after changing visibility
+    checkToggleState(); // Log the current state of the toggle switch
+});
