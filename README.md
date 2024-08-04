@@ -1,1 +1,1 @@
-This is my portfolio website currently under construction. It includes a custom language model fine tuned to data about me to act as an Artifically intelligent "me"
+This is my portfolio website made with HTML, CSS, js and node.js. The website is responi=sive and space-themed with a fun game inluded. It includes a custom language model fine tuned to data about me to act as an Artifically intelligent "me" in the about section.
