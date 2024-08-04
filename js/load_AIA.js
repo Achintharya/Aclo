@@ -81,11 +81,16 @@ function checkToggleState() {
 toggleSwitch.addEventListener("change", function() {
     const boring = document.getElementById("just_text");
     const cool = document.getElementById("coolStuff");
+    const Pageswitch = document.getElementById("switchPage")
 
     if (this.checked) {
         // Hide main content and show game content
         boring.style.display = "none";
         cool.style.display = "grid"; // Show coolStuff
+        setTimeout(() => {
+            Pageswitch.style.opacity = 0.1;
+        }, 1000); // Delay of 1 second
+
         startAttack();
         startShooting();
         this.setAttribute("aria-checked", "true"); // Update aria attribute
@@ -94,6 +99,7 @@ toggleSwitch.addEventListener("change", function() {
         console.log("boring stuff only");
         boring.style.display = "grid"; // Show just_text
         cool.style.display = "none"; // Hide coolStuff
+        Pageswitch.style.opacity=1;
         this.setAttribute("aria-checked", "false"); // Update aria attribute
     }
 

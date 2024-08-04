@@ -19,13 +19,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Another Danger - Demo";
-  src: url("fonts/Another Danger.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -174,12 +167,38 @@ nav ul li a {
   align-items: justify;
   display: grid;
   width: 100%;
-  height: 140vh;
+  height: 100vh;
   position: absolute;
 }
 
 #just_text p {
-  font-size: x-large;
+  font-family:"CANAVcAR Extra" ;
+  font-size: 1.3vw;
+}
+
+#just_text img{
+  width: 2.5vw;
+  height: 2.5vw;
+  padding:1vw;
+}
+
+#funTime{
+  padding: 2vw;
+  padding-left: 3vw;
+  color: #ff813d;
+  border-radius: 40%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 30%;
+  left: 50%;
+  width: 22vw;
+  height: 6vw;
+  font-size: 1.2vw;
+  line-height: 2.5vw;
+  font-family: "Avalors personal use";
+  align-items: center;
+  animation: twinkle 1s infinite;
 }
 
 #coolStuff {
@@ -197,18 +216,20 @@ nav ul li a {
 
 #switchPage {
   display: grid;
-  top: 20%;
-  left: 90%;
+  top: 10%;
+  left: 80%;
   overflow: visible;
-  width: 100%;
-  height: 40vh;
+  width: 15%;
+  height: 10vh;
   position: absolute;
   z-index: 100000;
+  transition: opacity 1s ease-in-out;
 }
 
 .bb8-toggle {
-  --toggle-size: 16px;
-  --toggle-width: 10.625em;
+  padding: 1vw;
+  --toggle-size: 0.8vw;
+  --toggle-width: 13.625vw;
   --toggle-height: 5.625em;
   --toggle-offset: calc((var(--toggle-height) - var(--bb8-diameter)) / 2);
   --toggle-bg: linear-gradient(#2c4770, #070e2b 35%, #628cac 50% 70%, #a6c5d4)
