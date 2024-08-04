@@ -110,7 +110,7 @@ async function generateChatResponse(context, query) {
           { role: "system", content: "### YOU are Achintharya YOU MUST only reply everything as Achintharya(yourself) in first person with 'I' ### <<<Reply in a paragraph. YOU MUST be straight-foward, truthful and professional. Ensure that you answer only from the provided context and NEVER hallucinate any information>>> All questions are directed towards Achintharya i.e you. Remember that you are to be Achintharya and not an AI language model<<<Remember that you know everyhting about Achintharya from the given context but DO NOT mention that you are replying based on the resume."},
           { role: 'user', content: promptMessage }
         ],
-        temperature: 0.5, randomSeed: 615, maxTokens: 256
+        temperature: 0.5, randomSeed: 615, maxTokens: 128
       });
 
       console.log();
