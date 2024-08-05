@@ -40,7 +40,7 @@ function animateTIE(timestamp) {
   const elapsed = timestamp - startTime;
 
   // Calculate the oscillation using a sine wave
-  const oscillation = Math.sin(elapsed / 1250) * 500; // Adjust the speed and amplitude as needed
+  const oscillation = Math.sin(elapsed / 1250) * 300; // Adjust the speed and amplitude as needed
   const rotation = targetY > window.innerHeight / 2 ? 'rotate(180deg)' : 'rotate(720deg)';
 
   // Update the TIE position with oscillation
