@@ -1452,8 +1452,8 @@ strong {
 
 /* Add the input container inside the black hole */
 .container .input__container {
-  width: 80%;
-  height: 80%;
+  width: 85%;
+  height: 85%;
   display: none; /* Hide initially */
   flex-direction: column;
   align-items: center;
@@ -1556,7 +1556,7 @@ strong {
 .input__label {
   display: grid;
   width: 50%;
-  height: 40%;
+  height: 50%;
   max-height:40%;
   color: #ffffff;
   font-size: 0.9vw;
@@ -1570,7 +1570,7 @@ strong {
 
 .input {
   font-size: 0.9vw;
-  margin-top: 15%;
+  padding: 2vw;
   border: none;
   outline: none;
   width: 40%;
