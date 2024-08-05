@@ -88,7 +88,7 @@ toggleSwitch.addEventListener("change", function() {
         boring.style.display = "none";
         cool.style.display = "grid"; // Show coolStuff
         setTimeout(() => {
-            Pageswitch.style.opacity = 0.1;
+            Pageswitch.style.opacity = 0.2;
         }, 1000); // Delay of 1 second
 
         startAttack();
