@@ -1190,10 +1190,6 @@ nav ul li a {
 
 #tie2 {
   width: 2%;
-  height: 2%;
-  background-image: url(https://img.icons8.com/color/48/000000/tie-fighter.png);
-  background-size: cover;
-  background-position: center;
   position: absolute;
   top: 0;
   left: 0;
