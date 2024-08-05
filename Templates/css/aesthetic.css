@@ -1852,7 +1852,8 @@ strong {
 .form {
   position: relative;
   display: grid;
-  font-family: inherit;
+  font-family: "Avalors Personal Use";
+  font-weight: bold;
   gap: 1.2vw;
   padding-inline: 2vw;
   padding-bottom: 0.4vw;
@@ -1901,6 +1902,7 @@ strong {
   outline: none;
   background-color: transparent;
   color: #64ffda;
+  font-family: "Avalors Personal Use"
   font-weight: bold;
   outline: 1px solid #64ffda;
   transition: all ease-in-out 0.3s;
