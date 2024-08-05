@@ -68,7 +68,7 @@ nav ul li a {
   --border-right: 0.2vw;
   --text-stroke-color: rgb(229, 254, 255);
   --animation-color: #ff8420;
-  --fs-size: 1.5vw;
+  --fs-size: 1.15vw;
   letter-spacing: 0.5vw;
   font-size: var(--fs-size);
   font-family: "CANAVAR Extra";
