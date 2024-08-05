@@ -35,7 +35,7 @@ function startShooting(){
         const y = event.clientY - rect.top;
 
         // Check if the click is within the defined region
-        if (y >= 500 && y <= 1000) {
+        if (y >= 300 && y <= 1000) {
           const bullet = document.createElement('div');
           bullet.className = 'bullet';
           bullet.style.left = `${x}px`;
