@@ -1534,6 +1534,7 @@ strong {
 .input__container {
   width: 50%;
   height: 50%;
+  max-height: 50%;
   border-radius: 100%;
   margin-top: 1vw;
   display: none; /* Hide initially */
@@ -1568,7 +1569,7 @@ strong {
 
 .input {
   font-size: 0.9vw;
-  margin-top: 8%;
+  margin-top: 10%;
   border: none;
   outline: none;
   width: 40%;
