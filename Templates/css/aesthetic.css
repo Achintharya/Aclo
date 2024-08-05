@@ -1177,9 +1177,6 @@ nav ul li a {
 #TIE {
   width: 2.5%;
   height: 2.5%;
-  background-image: url(https://img.icons8.com/color/48/000000/tie-fighter.png);
-  background-size: cover;
-  background-position: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -1201,9 +1198,6 @@ nav ul li a {
 #tie3 {
   width: 2%;
   height: 2%;
-  background-image: url(https://img.icons8.com/color/48/000000/tie-fighter.png);
-  background-size: cover;
-  background-position: center;
   position: absolute;
   top: 0;
   left: 0;
