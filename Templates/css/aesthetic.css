@@ -76,7 +76,7 @@ nav ul li a {
 /* button styling */
 .nav_button {
   --border-right: 0.2vw;
-  --text-stroke-color: rgb(229, 254, 255);
+  --text-stroke-color: rgb(255, 255, 255);
   --animation-color: #ff8420;
   --fs-size: 1vw;
   letter-spacing: 0.5vw;
@@ -166,11 +166,11 @@ nav ul li a {
 }
 
 #Home, #moon {
-  transition: top 0.1s ease-out, left 0.1s ease-out, background-size 0.1s ease-out;
-  -ms-transition: top 0.1s ease-out, left 0.1s ease-out, background-size 0.1s ease-out;
-  -o-transition: top 0.1s ease-out, left 0.1s ease-out, background-size 0.1s ease-out;
-  -webkit-transition: top 0.1s ease-out, left 0.1s ease-out, background-size 0.1s ease-out;
-  -moz-transition: top 0.1s ease-out, left 0.1s ease-out, background-size 0.1s ease-out;
+  transition: top 0.5s ease-out, left 0.5s ease-out, background-size 0.5s ease-out;
+  -ms-transition: top 0.5s ease-out, left 0.5s ease-out, background-size 0.5s ease-out;
+  -o-transition: top 0.5s ease-out, left 0.5s ease-out, background-size 0.5s ease-out;
+  -webkit-transition: top 0.5s ease-out, left 0.5s ease-out, background-size 0.5s ease-out;
+  -moz-transition: top 0.5s ease-out, left 0.5s ease-out, background-size 0.5s ease-out;
 }
 
 /* Media queries for responsive design */
