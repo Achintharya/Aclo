@@ -1,7 +1,6 @@
 import MistralClient from 'https://cdn.skypack.dev/@mistralai/mistralai';
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
-
 console.log("web_AIA.mjs module loaded");
 
 const mistralClient = new MistralClient("u2J9xMhy5qFjgpzMaCCT7YnoCIq1kjlH");
@@ -81,7 +80,6 @@ async function retrieveMatches(embedding) {
 
     if (!data || !Array.isArray(data) || data.length === 0) {
       console.log("No matching content found");
-  
     }
 
     return data[0].content; // Assuming data is an array and you want the first element's content
@@ -113,7 +111,6 @@ async function generateChatResponse(context, query) {
         temperature: 0.5, randomSeed: 615, maxTokens: 128
       });
 
-    
       let finalResponse = '';
       const inputLabelElement = document.querySelector('.input__label'); // Get the input label element
       inputLabelElement.innerHTML = ''; // Clear previous content

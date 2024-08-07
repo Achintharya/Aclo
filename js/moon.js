@@ -3,7 +3,7 @@ window.onload = function() {
   window.scrollTo(0, 0); // Scroll to the top-left corner of the page
 };
 
-function parallax(){
+function parallax() {
   const bg = document.getElementById("Home");
   const moon = document.getElementById("moon");
 
@@ -20,7 +20,7 @@ function parallax(){
   }
 }
 
-function stopParallax(){
+function stopParallax() {
   const bg = document.getElementById("Home");
   const moon = document.getElementById("moon");
 
@@ -31,7 +31,26 @@ function stopParallax(){
   }
 }
 
-window.addEventListener('scroll', parallax);
+// Throttle function to limit the rate at which the parallax function is called
+function throttle(fn, wait) {
+  let lastTime = 0;
+  return function(...args) {
+    const now = new Date().getTime();
+    if (now - lastTime >= wait) {
+      lastTime = now;
+      return fn(...args);
+    }
+  };
+}
+
+// Feature detection for requestAnimationFrame
+if (window.requestAnimationFrame) {
+  window.addEventListener('scroll', throttle(function() {
+    window.requestAnimationFrame(parallax);
+  }, 16)); // Throttle to approximately 60fps
+} else {
+  window.addEventListener('scroll', throttle(parallax, 16));
+}
 
 const nav_header = document.getElementById("navLink");
 nav_header.querySelector('a[href="#Home"]').addEventListener('click', function () {

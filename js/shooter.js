@@ -40,7 +40,6 @@ function startShooting() {
       container.appendChild(bullet);
 
       const bulletSpeed = 7;
-      const bulletAnimationFrame = requestAnimationFrame(moveBullet);
 
       function moveBullet() {
         bullet.style.top = `${parseFloat(bullet.style.top) - bulletSpeed}px`;
@@ -67,7 +66,9 @@ function startShooting() {
         if (tieHit) {
           bullet.remove();
           shots++;
-          if (shots >= requiredShots && f) f.remove();
+          if (shots >= requiredShots && f) {
+            f.remove();
+          }
         }
 
         if (!buttonHit && !tieHit) {
@@ -75,6 +76,7 @@ function startShooting() {
         }
       }
 
+      requestAnimationFrame(moveBullet);
       requestAnimationFrame(checkCollision);
 
       bullet.addEventListener('animationend', () => bullet.remove());
@@ -122,6 +124,16 @@ function startShooting() {
     }
 
     button.addEventListener('click', handleButtonClick);
+
+    // Feature detection for requestAnimationFrame
+    if (window.requestAnimationFrame) {
+      window.addEventListener('scroll', function() {
+        window.requestAnimationFrame(parallax);
+      });
+    } else {
+      window.addEventListener('scroll', parallax);
+    }
+
   });
 }
 

@@ -14,7 +14,7 @@ const cursorBox = document.createElement('div');
 cursorBox.className = 'cursor-box';
 coolSection.appendChild(cursorBox);
 
-const lerpFactor = 0.05;
+const lerpFactor = 0.04;
 const attackSpeed = 8;
 const attackIntervalTime = 850;
 const cursorHitArea = 3;
@@ -39,7 +39,19 @@ function updateCursorBox() {
   }
 }
 
-coolSection.addEventListener("mousemove", (ev) => {
+// Throttle function to limit the rate at which the updateCursorBox function is called
+function throttle(fn, wait) {
+  let lastTime = 0;
+  return function(...args) {
+    const now = new Date().getTime();
+    if (now - lastTime >= wait) {
+      lastTime = now;
+      return fn(...args);
+    }
+  };
+}
+
+coolSection.addEventListener("mousemove", throttle((ev) => {
   targetX = ev.clientX;
   targetY = ev.clientY;
 
@@ -47,7 +59,7 @@ coolSection.addEventListener("mousemove", (ev) => {
     isMoving = true;
     requestAnimationFrame(updateCursorBox);
   }
-});
+}, 16)); // Throttle to approximately 60fps
 
 function animateTIE(timestamp) {
   if (!startTime) startTime = timestamp;
@@ -146,3 +158,12 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 observer.observe(cursorBox);
+
+// Feature detection for requestAnimationFrame
+if (window.requestAnimationFrame) {
+  window.addEventListener('scroll', function() {
+    window.requestAnimationFrame(updateCursorBox);
+  });
+} else {
+  window.addEventListener('scroll', updateCursorBox);
+}

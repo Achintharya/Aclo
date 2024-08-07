@@ -1,9 +1,10 @@
 function expandContainer() {
-    const black_hole = document.getElementById('black_hole') 
+    const black_hole = document.getElementById('black_hole');
     const buttonContainer = document.getElementById('buttonContainer');
     const inputContainer = document.getElementById('inputContainer');
     const inputText = document.getElementById('inputText');
     const aboutH = document.getElementById('about_h');
+    const tieElements = document.querySelectorAll('#TIE, #tie2, #tie3'); // Select all TIE elements
 
     // Check if elements are found
     if (!buttonContainer) {
@@ -24,6 +25,7 @@ function expandContainer() {
     aboutH.style.display = 'none';
     
     inputContainer.style.display = 'flex'; // Ensure it's displayed
+    inputContainer.style.cursor= 'auto';
 
     setTimeout(() => {
         inputContainer.classList.add('active');
@@ -31,6 +33,9 @@ function expandContainer() {
     }, 10); // Small delay to allow the display change to take effect
 
     inputText.addEventListener('keypress', window.handleInput);
+
+    // Remove all TIE elements
+    tieElements.forEach(tie => tie.remove());
 }
 
 function handleInput(event) {

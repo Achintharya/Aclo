@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         boring.style.display = "flex";
         fun.style.display = "flex";
         arrow.style.display="block"
-        document.body.style.cursor = "auto";
         cool.style.display = "none"; 
         Pageswitch.style.opacity = 1;
         this.setAttribute("aria-checked", "false"); // Update aria attribute
