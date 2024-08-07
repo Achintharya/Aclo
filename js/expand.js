@@ -25,7 +25,6 @@ function expandContainer() {
     aboutH.style.display = 'none';
     
     inputContainer.style.display = 'flex'; // Ensure it's displayed
-    inputContainer.style.cursor= 'auto';
 
     setTimeout(() => {
         inputContainer.classList.add('active');
