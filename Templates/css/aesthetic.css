@@ -2000,7 +2000,7 @@ ul {
   align-items: center;
 }
 .contact_links .icon-content {
-  margin: 0 15%;
+  margin: 0% 20%;
   position: relative;
 }
 .contact_links .icon-content .tooltip {
@@ -2113,6 +2113,10 @@ ul {
     top: 90%;
     left: 37%;
   }
+
+  .contact_links .icon-content {
+  margin: 0% 50%;
+}
 
   .Earth {
     padding: 5%;
