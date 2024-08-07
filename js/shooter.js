@@ -45,7 +45,7 @@ function startShooting(){
           console.log(`Shooting bullet at (${x}, ${y}) within the allowed region`);
 
           // Set bullet speed
-          const bulletSpeed = 6; // Adjust speed as needed
+          const bulletSpeed = 7; // Adjust speed as needed
           let bulletAnimationFrame;
 
           const moveBullet = () => {
@@ -126,7 +126,7 @@ function startShooting(){
         // Delay before allowing the next bullet to be shot
         setTimeout(() => {
           canShoot = true; // Allow shooting again after delay
-        }, 250); // Adjust delay as needed (500ms here)
+        }, 150); // Adjust delay as needed (500ms here)
       }
     }
 

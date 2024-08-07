@@ -1533,7 +1533,7 @@ strong {
 }
 
 .input__container {
-  top: 20%;
+  top: 30%;
   width: 50%;
   border-radius: 100%;
   margin-top: 0.5vw;
@@ -1566,9 +1566,10 @@ strong {
 
 .input {
   font-size: 0.9vw;
-  margin-top: 10%;
+  position: relative;
   border: none;
   outline: none;
+  margin-top: 10%;
   width: 40%;
   padding: 0.6vw;
   padding-left: 0.9vw;
