@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (this.checked) {
         boring.style.display = "none";
         cool.style.display = "grid"; 
+        document.body.style.cursor = "none";
         fun.style.display = "none";
         arrow.style.display="none"
         setTimeout(() => {
@@ -90,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         boring.style.display = "flex";
         fun.style.display = "flex";
         arrow.style.display="block"
+        document.body.style.cursor = "auto";
         cool.style.display = "none"; 
         Pageswitch.style.opacity = 1;
         this.setAttribute("aria-checked", "false"); // Update aria attribute

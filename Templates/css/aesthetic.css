@@ -198,7 +198,7 @@ nav ul li a {
 }
 
 #coolStuff {
-  cursor: auto;
+  cursor: none;
   overflow: visible;
   place-items: center;
   display: grid;
