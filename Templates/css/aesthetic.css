@@ -1886,9 +1886,12 @@ strong {
   align-items: center;
   height: 100vh;
 }
+/* ... existing code ... */
 
 .obj1:hover .obj1child::after,
-.obj1child:hover::after {
+.obj1child:hover::after,
+.obj1:active .obj1child::after,
+.obj1child:active::after {
   opacity: 0.05; /* Make the pseudo-element disappear */
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
@@ -1912,7 +1915,9 @@ strong {
 }
 
 .obj2:hover .objchild::after,
-.obj2child:hover::after {
+.obj2child:hover::after,
+.obj2:active .objchild::after,
+.obj2child:active::after {
   -webkit-transition: opacity 0.4s ease;
   -ms-transition: opacity 0.4s ease;
   -o-transition: opacity 0.4s ease;
@@ -1973,7 +1978,9 @@ strong {
 }
 
 .obj3:hover .obj3child::after,
-.obj3child:hover::after {
+.obj3child:hover::after,
+.obj3:active .obj3child::after,
+.obj3child:active::after {
   opacity: 0.05; /* Make the pseudo-element disappear */
   -webkit-transition: opacity 0.4s ease;
   -ms-transition: opacity 0.4s ease;
@@ -2013,7 +2020,10 @@ strong {
 
 .inn1:hover,
 .inn2:hover,
-.inn3:hover {
+.inn3:hover,
+.inn1:active,
+.inn2:active,
+.inn3:active {
   background: transparent;
 }
 
@@ -2045,7 +2055,10 @@ strong {
 
 .obj1:hover,
 .obj2:hover,
-.obj3:hover {
+.obj3:hover,
+.obj1:active,
+.obj2:active,
+.obj3:active {
   transform: scale(1) rotateX(-45deg) rotateY(0deg); /* Reset to 2D */
   -webkit-transition: transform 1s ease;
   -moz-transition: transform 1s ease;
@@ -2056,7 +2069,10 @@ strong {
 
 .obj1child:hover,
 .obj2child:hover,
-.obj3child:hover {
+.obj3child:hover,
+.obj1child:active,
+.obj2child:active,
+.obj3child:active {
   transform: scale(1) rotateX(-45deg) rotateY(0deg); /* Reset to 2D */
   animation: none;
 }
