@@ -5,43 +5,35 @@ window.onload = function() {
 
 function parallax(){
   const bg = document.getElementById("Home");
-  const moon = document.getElementById("moon"); // Ensure 'moon' is defined
-  const inPos = window.innerHeight / 2;
-  var value = window.scrollY;
+  const moon = document.getElementById("moon");
 
-  // Check if bg and moon are defined
   if (bg && moon) {
-    bg.style.top = value * 0.5 + 'px'; // Parallax effect for bg
-    moon.style.left = inPos + value * 0.5 + 'px'; // Move to the right
-    moon.style.backgroundSize = (35 - value * 0.05) + '%'; // Get smaller
+    bg.style.top = window.scrollY * 0.5 + 'px';
+    moon.style.left = (window.innerHeight / 2) + window.scrollY * 0.5 + 'px';
+    moon.style.backgroundSize = (35 - window.scrollY * 0.05) + '%';
 
-    // Adjust moon position and size for responsiveness
     if (window.innerWidth <= 768) {
       moon.style.top = '40%';
-      moon.style.left = value * 0.5 + 'px'; // Move to the right
+      moon.style.left = window.scrollY * 0.5 + 'px';
       moon.style.width = '150vw';
     }
   }
 }
 
-window.addEventListener('scroll',parallax);
-
 function stopParallax(){
   const bg = document.getElementById("Home");
-  const moon = document.getElementById("moon"); // Ensure 'moon' is defined
+  const moon = document.getElementById("moon");
 
-    if (bg && moon) {
-      bg.style.top = '0%'; // Reset background position
-      moon.style.backgroundSize = '1%'; // Reset moon size
-      bg.scrollIntoView({
-        behavior: 'smooth'
-      })
+  if (bg && moon) {
+    bg.style.top = '0%';
+    moon.style.backgroundSize = '1%';
+    bg.scrollIntoView({ behavior: 'smooth' });
   }
-
 }
+
+window.addEventListener('scroll', parallax);
 
 const nav_header = document.getElementById("navLink");
 nav_header.querySelector('a[href="#Home"]').addEventListener('click', function () {
-  console.log("Home link clicked"); // Debug log
   stopParallax();
 });
