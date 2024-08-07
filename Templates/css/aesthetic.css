@@ -213,7 +213,7 @@ nav ul li a {
 }
 
 #coolStuff {
-  cursor: none;
+  cursor: auto;
   overflow: visible;
   place-items: center;
   display: grid;
