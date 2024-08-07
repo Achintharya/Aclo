@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (this.checked) {
         boring.style.display = "none";
         cool.style.display = "grid"; 
-        document.body.style.cursor = "none";
+        cool.style.cursor = "none";
         fun.style.display = "none";
         arrow.style.display="none"
         setTimeout(() => {
