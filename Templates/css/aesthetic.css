@@ -19,6 +19,12 @@
   font-style: normal;
 }
 
+*{
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
