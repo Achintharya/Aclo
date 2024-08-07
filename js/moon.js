@@ -13,9 +13,17 @@ function parallax(){
   if (bg && moon) {
     bg.style.top = value * 0.5 + 'px'; // Parallax effect for bg
     moon.style.left = inPos + value * 0.5 + 'px'; // Move to the right
-    moon.style.backgroundSize = (40 - value * 0.05) + '%'; // Get smaller
+    moon.style.backgroundSize = (35 - value * 0.05) + '%'; // Get smaller
+
+    // Adjust moon position and size for responsiveness
+    if (window.innerWidth <= 768) {
+      moon.style.top = '40%';
+      moon.style.left = value * 0.5 + 'px'; // Move to the right
+      moon.style.width = '150vw';
+    }
   }
 }
+
 window.addEventListener('scroll',parallax);
 
 function stopParallax(){
