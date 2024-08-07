@@ -27,7 +27,7 @@ html {
 body {
   background-color: rgb(0, 0, 0);
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   color: rgb(201, 251, 253);
   cursor: url("https://img.icons8.com/?size=40&id=mAKFHneLBzsq&format=png&color=000000"),
     auto;
@@ -164,6 +164,7 @@ nav ul li a {
 #just_text {
   margin: 5%;
   padding: 2%;
+  place-items: center;
   align-items: justify;
   display: grid;
   width: 100%;
@@ -1637,7 +1638,7 @@ strong {
 
 #projects {
   width: 100%;
-  height: 110vh;
+  height: 100%;
 }
 
 .parent-container {
