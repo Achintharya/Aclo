@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Achintharya">
     <meta name="description" content="This is Achintharya's portfolio">
+        
+    <FilesMatch "\.(jpg|jpeg|png|gif)$">
+      Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+      Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+    
     <title>Achintharya Patil
     </title>
     <link rel="stylesheet" href="Templates/css/aesthetic.css">
