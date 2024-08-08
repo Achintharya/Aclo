@@ -14,7 +14,13 @@
     </title>
     <link rel="stylesheet" href="Templates/css/aesthetic.css">
 
-    
+    <!-- Preload important scripts -->
+    <link rel="preload" href="./js/expand.js" as="script">
+    <link rel="preload" href="./js/shooter.js" as="script">
+    <link rel="preload" href="./js/load_AIA.js" as="script">
+    <link rel="preload" href="./js/moon.js" as="script">
+    <link rel="preload" href="./js/tie.js" as="script">
+
     <script type="module">
         import { processInput } from './js/web_AIA.mjs';
         console.log("processInput function imported");
@@ -57,7 +63,11 @@
 
     <div id="Home">
         <div id="moon"></div>
+        <div class="mobile-warning" id="mobileWarning">
+            Use desktop for better performance
+        </div>
         <h1>Hello I am <span>Achintharya</span> AI and Machine Learning engineer.</h1>
+        
         
     </div>
 
@@ -353,7 +363,7 @@
     <script src="./js/load_AIA.js"></script>
     <script src="./js/moon.js"></script>
     <script src="./js/tie.js"></script>
-    <script src="./js/email.js"></script>
+    <script src="./js/email.js" defer></script>
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
