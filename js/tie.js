@@ -15,11 +15,11 @@ cursorBox.className = 'cursor-box';
 coolSection.appendChild(cursorBox);
 
 const lerpFactor = 0.04;
-const attackSpeed = 8;
+const attackSpeed = 5;
 const attackIntervalTime = 850;
-const cursorHitArea = 3;
-const animationSpeed = 1250;
-const animationAmplitude = 300;
+const cursorHitArea = 2;
+const animationSpeed = 1000;
+const animationAmplitude = 200;
 const maxHits = 20;
 
 function updateCursorBox() {
@@ -68,9 +68,9 @@ function animateTIE(timestamp) {
   const oscillation = Math.sin(elapsed / animationSpeed) * animationAmplitude;
   const rotation = targetY > window.innerHeight / 2 ? 'rotate(180deg)' : 'rotate(720deg)';
 
-  f.style.transform = `translate(${targetX + oscillation}px, ${targetY - 100}px) ${rotation}`;
-  f2.style.transform = `translate(${targetX + 100 + oscillation}px, ${targetY - 50 + oscillation}px) ${rotation}`;
-  f3.style.transform = `translate(${targetX - 100 - oscillation}px, ${targetY + 50 + oscillation}px) ${rotation}`;
+  f.style.transform = `translate(${targetX + oscillation}px, ${targetY - 120}px) ${rotation}`;
+  f2.style.transform = `translate(${targetX + 120 + oscillation}px, ${targetY - 70 + oscillation}px) ${rotation}`;
+  f3.style.transform = `translate(${targetX - 120 - oscillation}px, ${targetY + 70 + oscillation}px) ${rotation}`;
 
   requestAnimationFrame(animateTIE);
 }

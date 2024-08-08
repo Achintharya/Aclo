@@ -8,7 +8,7 @@ function startShooting() {
     let clickCount = 0;
     let shots = 0;
     const requiredShots = 5;
-    const requiredClicks = 12;
+    const requiredClicks = 10;
     let canShoot = true;
 
     if (aboutSection && button) {
@@ -39,7 +39,7 @@ function startShooting() {
       bullet.style.position = 'absolute';
       container.appendChild(bullet);
 
-      const bulletSpeed = 7;
+      const bulletSpeed = 4;
 
       function moveBullet() {
         bullet.style.top = `${parseFloat(bullet.style.top) - bulletSpeed}px`;
@@ -102,7 +102,7 @@ function startShooting() {
     function resetShootCooldown() {
       setTimeout(() => {
         canShoot = true;
-      }, 150);
+      }, 200);
     }
 
     aboutH.textContent = `Hit the button ${requiredClicks} times to see some magic`;

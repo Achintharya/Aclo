@@ -1,6 +1,7 @@
 import MistralClient from 'https://cdn.skypack.dev/@mistralai/mistralai';
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
+
 console.log("web_AIA.mjs module loaded");
 
 const mistralClient = new MistralClient("u2J9xMhy5qFjgpzMaCCT7YnoCIq1kjlH");
@@ -9,7 +10,7 @@ const supabase = createClient("https://bewwfdiqefwvthokopxy.supabase.co", "eyJhb
 const BACKOFF_BASE_MS = 600; // Base backoff time in milliseconds
 const BACKOFF_MAX_ATTEMPTS = 2; // Maximum number of retry attempts
 
-export async function backoff(attempt) {
+async function backoff(attempt) {
   const delay = BACKOFF_BASE_MS * (2 ** attempt);
   await new Promise(resolve => setTimeout(resolve, delay));
 }
@@ -21,20 +22,20 @@ export async function processInput(input) {
   }
 
   try {
-    // 2. Creating an embedding of the input
+    // Creating an embedding of the input
     const embedding = await createEmbedding(input);
     if (embedding === null) {
       console.log("Failed to create embedding for the input");
       return generateChatResponse(input, "if no known query is detected, answer the query as yourself(Achintharya)");
     }
 
-    // 3. Retrieving similar embeddings / text chunks (aka "context")
+    // Retrieving similar embeddings / text chunks (aka "context")
     const context = await retrieveMatches(embedding);
     if (context === null) {
       console.log("Failed to retrieve matches for the embedding");
     }
 
-    // 4. Combining the input and the context in a prompt and using the chat API to generate a response
+    // Combining the input and the context in a prompt and using the chat API to generate a response
     const response = await generateChatResponse(context, input);
     if (response === null) {
       console.log("Failed to generate chat response");
@@ -132,12 +133,13 @@ async function generateChatResponse(context, query) {
         }
       } else {
         console.error(error.message);
-        return generateChatResponse(context, "if no known query is detected, answer the query as yourself(Achintharya)");
+        // Avoid infinite recursion by returning a default message
+        return "An error occurred while processing your request. Please try again.";
       }
     }
   }
   // Fallback call to generateChatResponse
-  return generateChatResponse(context, "if no known query is detected, answer the query as yourself(Achintharya)");
+  return "An error occurred while processing your request. Please try again.";
 }
 
 window.processInput = processInput;
