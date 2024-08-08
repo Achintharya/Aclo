@@ -123,7 +123,7 @@ nav ul li a {
 
 @keyframes moveText {
   0% { transform: translate(-50%, -50%) translateX(-210%); } /* Start offscreen to the left */
-  100% { transform: translate(-50%, -50%) translateX(210%); } /* End offscreen to the right */
+  100% { transform: translate(-50%, -50%) translateX(220%); } /* End offscreen to the right */
 }
 
 .mobile-warning {
@@ -132,11 +132,11 @@ nav ul li a {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: "Avalors Personal Use";
-  font-size: 1.6vw; /* Adjust size as needed */
+  font-size: 2.5vw; /* Adjust size as needed */
   color: rgba(255, 0, 0, 0.8); /* Change color as needed */
   filter: drop-shadow(0px 15px 25px rgba(255, 255, 255, 0.833));
   white-space: nowrap;
-  animation: moveText 5s linear infinite; /* Adjust duration for continuous movement */
+  animation: moveText 6s linear infinite; /* Adjust duration for continuous movement */
   display: none; /* Initially hidden */
 }
 
@@ -1983,7 +1983,6 @@ strong {
   align-items: center;
   height: 100vh;
 }
-/* ... existing code ... */
 
 .obj1:hover .obj:focus .obj1child::after,
 .obj1child:hover::after,
@@ -2043,8 +2042,8 @@ strong {
 .obj2,
 .obj3 {
   position: relative;
-  width: 33vw;
-  height: 30vw;
+  width: 30vw;
+  height: 25vw;
   transform-style: preserve-3d;
   -webkit-transition: 1s all;
   -ms-transition: 1s all;
@@ -2136,7 +2135,7 @@ strong {
   color: #ff8420;
   margin: 1%;
   background: #050a20;
-  font-size: 3.5vw;
+  font-size: 3vw;
   text-align: center;
   font-family: "Tourner";
 }
@@ -2152,7 +2151,7 @@ strong {
   word-spacing: 0.7vw;
   line-height: 1.8vw;
   text-align: justify;
-  font-size: 0.75vw;
+  font-size: 0.7vw;
   font-family: "Avalors Personal use";
 }
 
@@ -2201,19 +2200,79 @@ strong {
   .obj1,
   .obj2,
   .obj3 {
-    left: 50%;
-    width: 45vw;
-    height: 35vw;
+    top: 20%;
+    left: 25%;
+    width: 65vw;
+    height: 50vw;
+    transform: scale(0.9) rotateX(-90deg) rotateY(0deg);
+}
+
+  .obj1child,
+  .obj2child,
+  .obj3child {
+    animation: none;
+  }
+
+
+  .inn1:hover,
+  .inn2:hover,
+  .inn3:hover,
+  .inn1:focus,
+  .inn2:focus,
+  .inn3:focus,
+  .inn1:active,
+  .inn2:active,
+  .inn3:active {
+    background: #050a206f ;
+  }
+
+  .inn1 h1,
+  .inn2 h1,
+  .inn3 h1 {
+    margin: 3%;
+    font-size: 6vw;
+
   }
 
   .inn1 p,
   .inn2 p,
   .inn3 p {
-    word-spacing: 0.7vw;
-    line-height: 2.5vw;
-    font-size: 1.1vw;
+    padding: 1%;
+    word-spacing: 0.9vw;
+    line-height: 3.1vw;
+    font-size: 1.8vw;
+
   }
+
+  .obj1:hover,
+  .obj2:hover,
+  .obj3:hover,
+  .obj1:focus,
+  .obj2:focus,
+  .obj3:focus,
+  .obj1:active,
+  .obj2:active,
+  .obj3:active {
+    transform: scale(1) rotateX(-90deg) rotateY(0deg);
+    transition: transform 1s ease;
+  }
+
+  .obj1child:hover,
+  .obj2child:hover,
+  .obj3child:hover,
+  .obj1child:focus,
+  .obj2child:focus,
+  .obj3child:focus,
+  .obj1child:active,
+  .obj2child:active,
+  .obj3child:active {
+    transform: none; /* Reset to 2D */
+    animation: none;
+  }
+
 }
+
+
 
 #stalk_me {
   width: 100%;

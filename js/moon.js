@@ -11,6 +11,7 @@ function parallax() {
     } else {
       // Remove parallax effect for screens with width 768px or less
       intro.style.top = window.scrollY * 0.4 + 'px';
+      intro.style.transition = 'top 0.1s ease-out';
       moon.style.left = '50%';
 
     }
