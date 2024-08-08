@@ -2261,6 +2261,13 @@ strong {
     transition: transform 1s ease;
   }
 
+  .obj1.hover-effect,
+  .obj2.hover-effect,
+  .obj3.hover-effect {
+    transform: scale(1) rotateX(-90deg) rotateY(0deg);
+    transition: transform 1s ease;
+  }
+
   .obj1child:hover,
   .obj2child:hover,
   .obj3child:hover,

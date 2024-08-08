@@ -109,3 +109,8 @@ function stop_loader() {
     console.error("Loader not found");
   }
 }
+
+
+document.querySelectorAll('.obj1, .obj2, .obj3').addEventListener('touchstart', function() {
+  this.classList.toggle('hover-effect');
+});
