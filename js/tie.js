@@ -69,7 +69,7 @@ function animateTIE(timestamp) {
   const oscillation = Math.sin(elapsed / animationSpeed) * animationAmplitude;
   const rotation = targetY > window.innerHeight / 2 ? 'rotate(180deg)' : 'rotate(720deg)';
 
-  f.style.transform = `translate(${targetX + oscillation}px, ${targetY - 120}px) ${rotation}`;
+  f.style.transform = `translate(${targetX + oscillation}px, ${targetY - 220}px) ${rotation}`;
   f2.style.transform = `translate(${targetX + 70 + oscillation}px, ${targetY - 50 + oscillation}px) ${rotation}`;
   f3.style.transform = `translate(${targetX - 20 - oscillation}px, ${targetY + 20 + oscillation}px) ${rotation}`;
 
@@ -172,8 +172,11 @@ if (window.requestAnimationFrame) {
 
 function adjustForScreenWidth() {
   if (window.innerWidth <= 768) {
-    animationSpeed = 1000; // Slower animation speed for smaller screens
-    animationAmplitude = 100; // Reduce amplitude for smaller screens
+    f2.remove();
+    f3.remove();
+    animationSpeed = 1200;
+
 }}
+
 adjustForScreenWidth();
 window.addEventListener('resize', adjustForScreenWidth);
