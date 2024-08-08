@@ -172,11 +172,11 @@ if (window.requestAnimationFrame) {
 
 function adjustForScreenWidth() {
   if (window.innerWidth <= 768) {
+    f.remove();
     f2.remove();
     f3.remove();
-    animationSpeed = 1200;
-
-}}
+  }
+}
 
 adjustForScreenWidth();
 window.addEventListener('resize', adjustForScreenWidth);
