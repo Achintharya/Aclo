@@ -14,13 +14,14 @@ const cursorBox = document.createElement('div');
 cursorBox.className = 'cursor-box';
 coolSection.appendChild(cursorBox);
 
-const lerpFactor = 0.04;
+const lerpFactor = 0.02;
 const attackSpeed = 5;
 const attackIntervalTime = 850;
 const cursorHitArea = 2;
-const animationSpeed = 1000;
-const animationAmplitude = 200;
+let animationSpeed = 1000;
+let animationAmplitude = 300;
 const maxHits = 20;
+
 
 function updateCursorBox() {
   const currentX = parseFloat(cursorBox.style.left) || 0;
@@ -69,8 +70,8 @@ function animateTIE(timestamp) {
   const rotation = targetY > window.innerHeight / 2 ? 'rotate(180deg)' : 'rotate(720deg)';
 
   f.style.transform = `translate(${targetX + oscillation}px, ${targetY - 120}px) ${rotation}`;
-  f2.style.transform = `translate(${targetX + 120 + oscillation}px, ${targetY - 70 + oscillation}px) ${rotation}`;
-  f3.style.transform = `translate(${targetX - 120 - oscillation}px, ${targetY + 70 + oscillation}px) ${rotation}`;
+  f2.style.transform = `translate(${targetX + 70 + oscillation}px, ${targetY - 50 + oscillation}px) ${rotation}`;
+  f3.style.transform = `translate(${targetX - 20 - oscillation}px, ${targetY + 20 + oscillation}px) ${rotation}`;
 
   requestAnimationFrame(animateTIE);
 }
@@ -167,3 +168,12 @@ if (window.requestAnimationFrame) {
 } else {
   window.addEventListener('scroll', updateCursorBox);
 }
+
+
+function adjustForScreenWidth() {
+  if (window.innerWidth <= 768) {
+    animationSpeed = 1000; // Slower animation speed for smaller screens
+    animationAmplitude = 100; // Reduce amplitude for smaller screens
+}}
+adjustForScreenWidth();
+window.addEventListener('resize', adjustForScreenWidth);

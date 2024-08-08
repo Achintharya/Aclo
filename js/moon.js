@@ -1,35 +1,35 @@
-// Scroll to the top of the page on refresh
-window.onload = function() {
-  window.scrollTo(0, 0); // Scroll to the top-left corner of the page
-};
-
 function parallax() {
   const bg = document.getElementById("Home");
   const moon = document.getElementById("moon");
+  const intro = document.getElementById('Home')
 
   if (bg && moon) {
-    bg.style.top = window.scrollY * 0.5 + 'px';
-    moon.style.left = (window.innerHeight / 2) + window.scrollY * 0.5 + 'px';
-    moon.style.backgroundSize = (35 - window.scrollY * 0.05) + '%';
+    if (window.innerWidth > 768) { // Apply parallax effect only if screen width is greater than 768px
+      bg.style.top = window.scrollY * 0.5 + 'px';
+      moon.style.left = (window.innerHeight / 2) + window.scrollY * 0.5 + 'px';
+      moon.style.backgroundSize = (35 - window.scrollY * 0.05) + '%';
+    } else {
+      // Remove parallax effect for screens with width 768px or less
+      intro.style.top = window.scrollY * 0.4 + 'px';
+      moon.style.left = '50%';
 
-    if (window.innerWidth <= 768) {
-      moon.style.top = '40%';
-      moon.style.left = window.scrollY * 0.5 + 'px';
-      moon.style.width = '150vw';
     }
   }
 }
 
 function stopParallax() {
   const bg = document.getElementById("Home");
-  const moon = document.getElementById("moon");
+  const moon = document.getElementById("moon"); 
 
   if (bg && moon) {
-    bg.style.top = '0%';
-    moon.style.backgroundSize = '1%';
-    bg.scrollIntoView({ behavior: 'smooth' });
+    if (window.innerWidth > 768) { // Apply only if screen width is greater than 768px
+      bg.style.top = '0%';
+      moon.style.backgroundSize = '1%';
+      bg.scrollIntoView({ behavior: 'smooth' });
+    } 
   }
 }
+
 
 // Throttle function to limit the rate at which the parallax function is called
 function throttle(fn, wait) {
