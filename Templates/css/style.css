@@ -33,7 +33,7 @@ body {
   background-color: rgb(0, 0, 0);
   width: 100%;
   min-height: 100%;
-  color: rgb(202, 253, 255);
+  color: #b0ffed;
   cursor: url("https://img.icons8.com/?size=40&id=mAKFHneLBzsq&format=png&color=000000"), auto;
   user-select: none; /* Standard */
   -webkit-user-select: none; /* Safari */
@@ -76,7 +76,7 @@ nav ul li a {
 /* button styling */
 .nav_button {
   --border-right: 0.2vw;
-  --text-stroke-color: rgb(212, 251, 253);
+  --text-stroke-color: #c5fff1;
   --animation-color: #ff8420;
   --fs-size: 1vw;
   letter-spacing: 0.5vw;
@@ -134,7 +134,7 @@ nav ul li a {
   font-family: "Avalors Personal Use";
   font-size: 2.5vw; /* Adjust size as needed */
   color: rgba(255, 0, 0, 0.8); /* Change color as needed */
-  filter: drop-shadow(0px 15px 25px rgba(255, 255, 255, 0.833));
+  filter: drop-shadow(-40px 15px 45px rgb(255, 255, 255));
   white-space: nowrap;
   animation: moveText 5s linear infinite; /* Adjust duration for continuous movement */
   display: none; /* Initially hidden */
@@ -146,7 +146,7 @@ nav ul li a {
   font-size: 2vw;
   letter-spacing: 0.7vw;
   line-height: 4vw;
-  color: rgb(202, 253, 255);
+  color: #85ffe2;
   white-space: nowrap;
   width: 100%;
   height: 70%;
@@ -155,6 +155,7 @@ nav ul li a {
   text-align: center;
   z-index: 1000;
   overflow: hidden;   
+  filter: brightness(120%);
 }
 
 
@@ -185,7 +186,7 @@ nav ul li a {
   background-repeat: no-repeat;
   background-position: center;
   filter: contrast(1.3) drop-shadow(15px 15px 30px rgba(255, 255, 255, 0.749))
-    brightness(80%);
+    brightness(70%);
   z-index: -1;
 }
 
@@ -206,6 +207,7 @@ nav ul li a {
 
   .nav_button {
     --fs-size: 2.5vw;
+    filter: brightness(110%);
   }
 
   #moon{
@@ -221,10 +223,9 @@ nav ul li a {
   color:#85ffe2;
   font-size: 5vw;
   text-align: center;
-  letter-spacing: 1.3vw;
+  letter-spacing: 1.5vw;
   line-height: 10vw;
   text-wrap: wrap;
-
 }
 
 }
@@ -1312,10 +1313,17 @@ nav ul li a {
   }
 
   .bb8-toggle {
-    --toggle-size: 1vw;
+    --toggle-size: 1.2vw;
     --toggle-width: 25vw;
-    --toggle-height: 10em;
+    --toggle-height: 9em;
   }
+
+  .bb8__body {
+    width: 6.25em;
+    height: 6.25em;
+  }
+
+
 }
 
 .cursor-box {
@@ -1640,24 +1648,11 @@ strong {
     height: 10%;
   }
 
-  .attack {
-  width: 0.5vw;
-  height: 0.7vw;
-}
-
-  .bullet{
-  width: 0.8vw;
-  height: 1.2vw;
-  }
-
-
   #about_h {
-  top: -5%;
-  font-size: 3vw;
-
+    display: none;
 }
   .button-container {
-    top: 60%%;
+    top: 40%;
   }
 
   .btn{
@@ -1666,8 +1661,8 @@ strong {
   }
 
   #container-stars {
-  width: 35vw;
-  height: 10vh;
+  width: 32vw;
+  height: 9vh;
 }
 
   strong{
@@ -2216,12 +2211,15 @@ strong {
   .inn1:hover,
   .inn2:hover,
   .inn3:hover,
-  .inn1:focus,
-  .inn2:focus,
-  .inn3:focus,
   .inn1:active,
   .inn2:active,
   .inn3:active {
+    background: #050a206f ;
+  }
+
+  .inn1:focus,
+  .inn2:focus,
+  .inn3:focus{
     background: #050a206f ;
   }
 
@@ -2256,12 +2254,6 @@ strong {
     transition: transform 1s ease;
   }
 
-  .obj1.hover-effect,
-  .obj2.hover-effect,
-  .obj3.hover-effect {
-    transform: scale(1) rotateX(-90deg) rotateY(0deg);
-    transition: transform 1s ease;
-  }
 
   .obj1child:hover,
   .obj2child:hover,
@@ -2480,6 +2472,7 @@ ul {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
 .contact_links .icon-content a:hover {
   box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
 }
@@ -2557,13 +2550,23 @@ ul {
 
   .socials {
     position: absolute;
-    top: 90%;
-    left: 37%;
+    top: 85%;
+    left: 27.5%;
   }
 
   .contact_links .icon-content {
-    margin: 0% 50%;
+    margin: 0% 20%;
   }
+
+  .contact_links .icon-content a {
+  width: 10vw;
+  height: 10vw;
+}
+
+  .contact_links .icon-content a svg {
+  width: 5vw;
+  height: 5vw;
+}
 
   .Earth {
     padding: 5%;

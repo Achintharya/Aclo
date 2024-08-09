@@ -20,68 +20,70 @@ function startShooting() {
     }
 
     function shootBullet(event, container) {
-      canShoot = false;
 
-      const rect = container.getBoundingClientRect();
-      const cursorBoxRect = cursorBox.getBoundingClientRect();
-      const x = cursorBoxRect.left + cursorBoxRect.width / 2 - rect.left;
-      const y = cursorBoxRect.top + cursorBoxRect.height / 2 - rect.top;
+      if(window.innerWidth > 768){
+        canShoot = false;
+        const rect = container.getBoundingClientRect();
+        const cursorBoxRect = cursorBox.getBoundingClientRect();
+        const x = cursorBoxRect.left + cursorBoxRect.width / 2 - rect.left;
+        const y = cursorBoxRect.top + cursorBoxRect.height / 2 - rect.top;
 
-      if (y < 300 || y > 1000) {
-        resetShootCooldown();
-        return;
-      }
-
-      const bullet = document.createElement('div');
-      bullet.className = 'bullet';
-      bullet.style.left = `${x}px`;
-      bullet.style.top = `${y}px`;
-      bullet.style.position = 'absolute';
-      container.appendChild(bullet);
-
-      const bulletSpeed = 4;
-
-      function moveBullet() {
-        bullet.style.top = `${parseFloat(bullet.style.top) - bulletSpeed}px`;
-        if (parseFloat(bullet.style.top) > 0) {
-          requestAnimationFrame(moveBullet);
-        } else {
-          bullet.remove();
-        }
-      }
-
-      function checkCollision() {
-        const bulletRect = bullet.getBoundingClientRect();
-        const buttonRect = button.getBoundingClientRect();
-        const tieRect = f.getBoundingClientRect();
-
-        const buttonHit = checkHit(bulletRect, buttonRect);
-        const tieHit = checkHit(bulletRect, tieRect);
-
-        if (buttonHit) {
-          bullet.remove();
-          triggerButtonHit();
+        if (y < 300 || y > 1000) {
+          resetShootCooldown();
+          return;
         }
 
-        if (tieHit) {
-          bullet.remove();
-          shots++;
-          if (shots >= requiredShots && f) {
-            f.remove();
+        const bullet = document.createElement('div');
+        bullet.className = 'bullet';
+        bullet.style.left = `${x}px`;
+        bullet.style.top = `${y}px`;
+        bullet.style.position = 'absolute';
+        container.appendChild(bullet);
+
+        const bulletSpeed = 4;
+
+        function moveBullet() {
+          bullet.style.top = `${parseFloat(bullet.style.top) - bulletSpeed}px`;
+          if (parseFloat(bullet.style.top) > 0) {
+            requestAnimationFrame(moveBullet);
+          } else {
+            bullet.remove();
           }
         }
 
-        if (!buttonHit && !tieHit) {
-          requestAnimationFrame(checkCollision);
+        function checkCollision() {
+          const bulletRect = bullet.getBoundingClientRect();
+          const buttonRect = button.getBoundingClientRect();
+          const tieRect = f.getBoundingClientRect();
+
+          const buttonHit = checkHit(bulletRect, buttonRect);
+          const tieHit = checkHit(bulletRect, tieRect);
+
+          if (buttonHit) {
+            bullet.remove();
+            triggerButtonHit();
+          }
+
+          if (tieHit) {
+            bullet.remove();
+            shots++;
+            if (shots >= requiredShots && f) {
+              f.remove();
+            }
+          }
+
+          if (!buttonHit && !tieHit) {
+            requestAnimationFrame(checkCollision);
+          }
         }
+
+        requestAnimationFrame(moveBullet);
+        requestAnimationFrame(checkCollision);
+
+        bullet.addEventListener('animationend', () => bullet.remove());
+
+        resetShootCooldown();
       }
-
-      requestAnimationFrame(moveBullet);
-      requestAnimationFrame(checkCollision);
-
-      bullet.addEventListener('animationend', () => bullet.remove());
-
-      resetShootCooldown();
     }
 
     function checkHit(rect1, rect2) {
@@ -108,23 +110,26 @@ function startShooting() {
     aboutH.textContent = `Hit the button ${requiredClicks} times to see some magic`;
 
     function handleButtonClick() {
-      clickCount++;
-
-      button.classList.add('hover');
-      setTimeout(() => button.classList.remove('hover'), 200);
-
-      if (aboutH) {
-        aboutH.textContent = `${requiredClicks - clickCount} times to go`;
-      }
-
-      if (clickCount >= requiredClicks) {
+      if (window.innerWidth < 768) {  // Handles screens less than 768px
         expandContainer();
-        clickCount = 0;
+      } else {  // Handles screens 768px and wider
+        clickCount++;
+
+        button.classList.add('hover');
+        setTimeout(() => button.classList.remove('hover'), 200);
+
+        if (aboutH) {
+          aboutH.textContent = `${requiredClicks - clickCount} times to go`;
+        }
+
+        if (clickCount >= requiredClicks) {
+          expandContainer();
+          clickCount = 0;
+        }
       }
     }
 
     button.addEventListener('click', handleButtonClick);
-
     // Feature detection for requestAnimationFrame
     if (window.requestAnimationFrame) {
       window.addEventListener('scroll', function() {
@@ -136,5 +141,6 @@ function startShooting() {
 
   });
 }
+
 
 startShooting();

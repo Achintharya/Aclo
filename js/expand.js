@@ -33,7 +33,6 @@ function expandContainer() {
 
     inputText.addEventListener('keypress', window.handleInput);
 
-    // Remove all TIE elements
     tieElements.forEach(tie => tie.remove());
 }
 
