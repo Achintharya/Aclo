@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return; // Do nothing if the screen width is less than 768px
       }
 
-      entries.forEach(entry => {
+      else {entries.forEach(entry => {
         if (entry.isIntersecting) {
           window.scrollTo({
             top: aboutSection.offsetTop,
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
       });
-    };
+    };}
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     observer.observe(aboutSection);
