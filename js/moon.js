@@ -1,18 +1,12 @@
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
-
-  // Hide the preloader and show the main content
   preloader.style.display = 'none';
-
 });
-
-
 
 
 function parallax() {
   const bg = document.getElementById("Home");
   const moon = document.getElementById("moon");
-  const intro = document.getElementById('Home')
 
   if (bg && moon) {
     if (window.innerWidth > 768) { // Apply parallax effect only if screen width is greater than 768px
@@ -23,7 +17,6 @@ function parallax() {
       // Remove parallax effect for screens with width 768px or less
       bg.style.top =  '0%';
       moon.style.left = '50%';
-
     }
   }
 }

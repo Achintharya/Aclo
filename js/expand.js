@@ -5,6 +5,7 @@ function expandContainer() {
     const inputText = document.getElementById('inputText');
     const aboutH = document.getElementById('about_h');
     const tieElements = document.querySelectorAll('#TIE, #tie2, #tie3'); // Select all TIE elements
+    const cool = document.getElementById("coolStuff");
 
     // Check if elements are found
     if (!buttonContainer) {
@@ -24,9 +25,10 @@ function expandContainer() {
     buttonContainer.style.display = 'none';
     aboutH.style.display = 'none';
     
-    inputContainer.style.display = 'flex'; // Ensure it's displayed
+    inputContainer.style.display = 'flex';
 
     setTimeout(() => {
+        cool.style.cursor = 'default';
         inputContainer.classList.add('active');
         black_hole.classList.add('active');
     }, 10); // Small delay to allow the display change to take effect

@@ -32,10 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check if the section is already in view on page load
 
-    // IntersectionObserver to scroll #about into view when 50% visible
-    const observerOptions = { root: null, threshold: 0.6 };
+    const observerOptions = { root: null, threshold: 0.5 };
 
     const observerCallback = (entries) => {
+      // Check if the screen width is less than 768px
+      if (window.innerWidth < 768) {
+        return; // Do nothing if the screen width is less than 768px
+      }
+
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           window.scrollTo({
@@ -49,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     observer.observe(aboutSection);
+
+
   } else {
     console.error("About section not found");
   }
