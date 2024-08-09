@@ -1,3 +1,14 @@
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+
+  // Hide the preloader and show the main content
+  preloader.style.display = 'none';
+
+});
+
+
+
+
 function parallax() {
   const bg = document.getElementById("Home");
   const moon = document.getElementById("moon");
