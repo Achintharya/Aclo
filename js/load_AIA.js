@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check if the section is already in view on page load
 
-    const observerOptions = { root: null, threshold: 0.5 };
+    const observerOptions = { root: null, threshold: 0.75 };
 
     const observerCallback = (entries) => {
       // Check if the screen width is less than 768px
