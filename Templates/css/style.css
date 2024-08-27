@@ -1669,8 +1669,7 @@ strong {
 @media(max-width: 768px){
 
   .cursor-box{
-    width: 12%;
-    height: 10%;
+    display: none;
   }
 
   #about_h {
