@@ -55,4 +55,4 @@ document.querySelectorAll('.obj1, .obj2, .obj3').forEach(function(element) {
     this.classList.toggle('hover-effect');
   });
 });
-})
+});
