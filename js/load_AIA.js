@@ -74,34 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Star container not found");
   }
 
-  // Toggle switch functionality
-  if (toggleSwitch && boring && cool && Pageswitch && fun) {
-    toggleSwitch.addEventListener("change", function() {
-      if (this.checked) {
-        boring.style.display = "none";
-        cool.style.display = "grid"; 
-        fun.style.display = "none";
-        arrow.style.display="none"
-        setTimeout(() => {
-          Pageswitch.style.opacity = 0.2;
-        }, 1000); // Delay of 1 second
 
-        startAttack();
-        startShooting();
-        this.setAttribute("aria-checked", "true"); // Update aria attribute
-      } else {
-        boring.style.display = "flex";
-        fun.style.display = "flex";
-        arrow.style.display="block"
-        cool.style.display = "none"; 
-        Pageswitch.style.opacity = 1;
-        this.setAttribute("aria-checked", "false"); // Update aria attribute
-      }
-    });
-  } else {
-    console.error("Toggle switch or related elements not found");
-  }
-});
 
 // Loader stop function
 function stop_loader() {
