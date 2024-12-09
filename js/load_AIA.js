@@ -3,12 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputText = document.getElementById('inputText');
   const aboutSection = document.getElementById('about');
   const starContainer = document.querySelector('#about_stars');
-  const toggleSwitch = document.querySelector('.bb8-toggle__checkbox');
-  const boring = document.getElementById("just_text");
   const cool = document.getElementById("coolStuff");
-  const Pageswitch = document.getElementById("switchPage");
   const fun = document.getElementById("funTime");
-  const arrow = document.getElementById("arrow");
+
 
   // Input text event listener
   if (inputText) {
