@@ -7,47 +7,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const fun = document.getElementById("funTime");
 
 
-  // Scroll animation for #about section
-  if (aboutSection) {
-    const handleScroll = () => {
-      const sectionTop = aboutSection.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      if (sectionTop < windowHeight) {
-        aboutSection.classList.add('visible');
-      } else {
-        aboutSection.classList.remove('visible');
+// Scroll animation for #about section
+if (aboutSection) {
+  const handleScroll = () => {
+    const sectionTop = aboutSection.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    if (sectionTop < windowHeight) {
+      aboutSection.classList.add('visible');
+    } else {
+      aboutSection.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Check if the section is already in view on page load
+
+  const observerOptions = { root: null, threshold: 0.75 };
+
+  const observerCallback = (entries) => {
+    // Check if the screen width is less than 768px
+    if (window.innerWidth < 768) {
+      return; // Do nothing if the screen width is less than 768px
+    }
+
+    else {entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        window.scrollTo({
+          top: aboutSection.offsetTop,
+          left: aboutSection.offsetLeft,
+          behavior: 'smooth'
+        });
       }
-    };
+    });
+  };}
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check if the section is already in view on page load
-
-    const observerOptions = { root: null, threshold: 0.75 };
-
-    const observerCallback = (entries) => {
-      // Check if the screen width is less than 768px
-      if (window.innerWidth < 768) {
-        return; // Do nothing if the screen width is less than 768px
-      }
-
-      else {entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          window.scrollTo({
-            top: aboutSection.offsetTop,
-            left: aboutSection.offsetLeft,
-            behavior: 'smooth'
-          });
-        }
-      });
-    };}
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    observer.observe(aboutSection);
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  observer.observe(aboutSection);
 
 
-  } else {
-    console.error("About section not found");
-  }
+} else {
+  console.error("About section not found");
+}
 
 
   // Input text event listener
@@ -77,15 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Loader stop function
-function stop_loader() {
-  const loader = document.getElementById('loader_container');
-  if (loader) {
-    loader.classList.add('dead');
-  } else {
-    console.error("Loader not found");
-  }
-}
 
 
 // Select all elements with the classes .obj1, .obj2, and .obj3

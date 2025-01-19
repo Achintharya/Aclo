@@ -38,6 +38,17 @@ function expandContainer() {
     tieElements.forEach(tie => tie.remove());
 }
 
+// Loader stop function
+function stop_loader() {
+  const loader = document.getElementById('loader_container');
+  if (loader) {
+    loader.classList.add('dead');
+  } else {
+    console.error("Loader not found");
+  }
+}
+
+
 function handleInput(event) {
     if (event.key === 'Enter') {
         stop_loader();
