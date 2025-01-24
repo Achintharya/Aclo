@@ -50,7 +50,8 @@ function stop_loader() {
   }
 }
 
-export function handleInput(event) {
+
+function handleInput(event) {
     if (event.key === 'Enter') {
         stop_loader();
         const userInput = event.target.value;

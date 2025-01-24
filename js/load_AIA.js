@@ -73,16 +73,5 @@ if (aboutSection) {
     console.error("Star container not found");
   }
 
-
-// Select all elements with the classes .obj1, .obj2, and .obj3
-document.querySelectorAll('.obj1, .obj2, .obj3').forEach(function(element) {
-  // Add an event listener for both touchstart and click events
-  element.addEventListener('touchstart', function() {
-    this.classList.toggle('hover-effect');
-  });
-  element.addEventListener('click', function() {
-    this.classList.toggle('hover-effect');
-  });
-});
 });
 

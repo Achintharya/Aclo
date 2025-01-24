@@ -141,5 +141,3 @@ async function generateChatResponse(context, query) {
   // Fallback call to generateChatResponse
   return "An error occurred while processing your request. Please try again.";
 }
-
-
