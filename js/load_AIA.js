@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputText = document.getElementById('inputText');
   const aboutSection = document.getElementById('about');
   const starContainer = document.querySelector('#about_stars');
-  const cool = document.getElementById("coolStuff");
-  const fun = document.getElementById("funTime");
 
 
 // Scroll animation for #about section
@@ -76,9 +74,6 @@ if (aboutSection) {
   }
 
 
-
-
-
 // Select all elements with the classes .obj1, .obj2, and .obj3
 document.querySelectorAll('.obj1, .obj2, .obj3').forEach(function(element) {
   // Add an event listener for both touchstart and click events
@@ -90,3 +85,4 @@ document.querySelectorAll('.obj1, .obj2, .obj3').forEach(function(element) {
   });
 });
 });
+

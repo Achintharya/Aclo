@@ -4,7 +4,7 @@ import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
 console.log("web_AIA.mjs module loaded");
 
-const mistralClient = new MistralClient("u2J9xMhy5qFjgpzMaCCT7YnoCIq1kjlH");
+const mistralClient = new MistralClient("6j9Rq0RWLutx1ZFdZpxEjeA93K6sk59L");
 const supabase = createClient("https://bewwfdiqefwvthokopxy.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJld3dmZGlxZWZ3dnRob2tvcHh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkyMTk0NTcsImV4cCI6MjAzNDc5NTQ1N30.o5JY0pPTp1Kt_We67jL_WR_G8iwsm7hjRtF8HYKOcao");
 
 const BACKOFF_BASE_MS = 600; // Base backoff time in milliseconds
@@ -15,7 +15,7 @@ async function backoff(attempt) {
   await new Promise(resolve => setTimeout(resolve, delay));
 }
 
-export async function processInput(input) {
+async function processInput(input) {
   if (!input.trim()) {
     console.log("No input detected");
     return generateChatResponse(input, "if no known query is detected, ask the user to ask them anything about yourself");
@@ -142,4 +142,74 @@ async function generateChatResponse(context, query) {
   return "An error occurred while processing your request. Please try again.";
 }
 
-window.processInput = processInput;
+function expandContainer() {
+    const black_hole = document.getElementById('black_hole');
+    const buttonContainer = document.getElementById('buttonContainer');
+    const inputContainer = document.getElementById('inputContainer');
+    const inputText = document.getElementById('inputText');
+    const aboutH = document.getElementById('about_h');
+    const tieElements = document.querySelectorAll('#TIE, #tie2, #tie3'); // Select all TIE elements
+    const cool = document.getElementById("coolStuff");
+
+    // Check if elements are found
+    if (!buttonContainer) {
+        console.error("buttonContainer not found");
+        return;
+    }
+    if (!inputContainer) {
+        console.error("inputContainer not found");
+        return;
+    }
+    if (!inputText) {
+        console.error("inputText not found");
+        return;
+    }
+
+    // Hide the button container
+    buttonContainer.style.display = 'none';
+    aboutH.style.display = 'none';
+    
+    inputContainer.style.display = 'flex';
+
+    setTimeout(() => {
+        cool.style.cursor = 'default';
+        inputContainer.classList.add('active');
+        black_hole.classList.add('active');
+    }, 10); // Small delay to allow the display change to take effect
+
+    inputText.addEventListener('keypress', window.handleInput);
+
+    tieElements.forEach(tie => tie.remove());
+}
+
+// Loader stop function
+function stop_loader() {
+  const loader = document.getElementById('loader_container');
+  if (loader) {
+    loader.classList.add('dead');
+  } else {
+    console.error("Loader not found");
+  }
+}
+
+function handleInput(event) {
+    if (event.key === 'Enter') {
+        stop_loader();
+        const userInput = event.target.value;
+        processInput(userInput)
+            .then(modelOutput => {
+                const inputLabel = document.querySelector('.input__label');
+                if (inputLabel) {
+                    inputLabel.innerHTML = modelOutput;
+                } else {
+                    console.error("Input label not found");
+                }
+            })
+            .catch(error => {
+                console.error("Error processing input:", error);
+            });
+    }
+}
+
+window.handleInput = handleInput;
+window.expandContainer = expandContainer;
