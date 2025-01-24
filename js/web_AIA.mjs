@@ -4,7 +4,7 @@ import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
 console.log("web_AIA.mjs module loaded");
 
-const mistralClient = new MistralClient("u2J9xMhy5qFjgpzMaCCT7YnoCIq1kjlH");
+const mistralClient = new MistralClient("6j9Rq0RWLutx1ZFdZpxEjeA93K6sk59L");
 const supabase = createClient("https://bewwfdiqefwvthokopxy.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJld3dmZGlxZWZ3dnRob2tvcHh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkyMTk0NTcsImV4cCI6MjAzNDc5NTQ1N30.o5JY0pPTp1Kt_We67jL_WR_G8iwsm7hjRtF8HYKOcao");
 
 const BACKOFF_BASE_MS = 600; // Base backoff time in milliseconds
